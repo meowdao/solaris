@@ -1,0 +1,17 @@
+#project
+configs/config.js
+
+# IDEA
+.idea
+
+# Mac
+.DS_Store
+
+# NODE
+assets/vendors
+node_modules
+dist
+logs
+
+# Data
+data
