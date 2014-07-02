@@ -15,7 +15,7 @@ var methods = {
         if (query.object <= 12) {
             epmc.calcWrt(query.object, query.center, jd, 0.5, xv, vv);
         } else {
-            epmc.calcWrtDwarf(query.object, query.center - 12, jd, 0.5, xv, vv);
+            epmc.calcWrtDwarf(query.object - 12, query.center, jd, 0.5, xv, vv);
         }
         return Q({xv: xv, vv: vv});
     },

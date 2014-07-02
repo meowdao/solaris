@@ -22,7 +22,7 @@ require([
 
     var app = new Solaris(document.getElementById("solaris"), {
         center: 11,
-        scale: 10
+        scale: 35
     });
     app.loadView("void");
     app.loadView("grid");
@@ -34,6 +34,7 @@ require([
         }}
     }});*/
 /*
+    // planets, dwarfs and satellites
     app.loadView("system", {
         stars: {
             sun: {
@@ -67,6 +68,8 @@ require([
     });
 */
 
+/*
+    // planets only
     app.loadView("system", {
         stars: {
             sun: {
@@ -78,6 +81,23 @@ require([
                     jupiter: {orbit: true},
                     saturn: {orbit: true},
                     uranus: {orbit: true},
+                }
+            }
+        }
+    });
+*/
+    // dwarfs only
+    app.loadView("system", {
+        stars: {
+            sun: {
+                dwarfs: {
+                    ceres: {orbit: true},
+                    pallas: {orbit: true},
+                    vesta: {orbit: true},
+                    sedna: {orbit: true},
+                    haumea: {orbit: true},
+                    makemake: {orbit: true},
+                    eris: {orbit: true}
                 }
             }
         }
