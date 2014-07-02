@@ -1,7 +1,5 @@
 "use strict";
 
-var Q = require("q");
-
 var EpmFile = require("./EpmFile.js");
 
 var EpmCalculator = function () {
@@ -25,8 +23,8 @@ EpmCalculator.prototype = {
             this.all_files.push(new EpmFile(__dirname + "/../../data/quasar/011m/EPM/BIN/" + this.planets[i] + ".bin"));
         }
 
-        for (var i = 0; i < 7; i++) {
-            this.all_files.push(new EpmFile(__dirname + "/../../data/quasar/011m/EPD/BIN/" + this.dwarves[i] + ".bin"));
+        for (var j = 0; j < 7; j++) {
+            this.all_files.push(new EpmFile(__dirname + "/../../data/quasar/011m/EPD/BIN/" + this.dwarves[j] + ".bin"));
         }
 
         this.all_files.push(new EpmFile(__dirname + "/../../data/quasar/011m/TT-TDB/BIN/" + this.tt_tdb + ".bin"));
@@ -78,7 +76,7 @@ EpmCalculator.prototype = {
                 pos[i] += pos2[i] * (this.rho - 1) / this.rho;
                 vel[i] += vel2[i] * (this.rho - 1) / this.rho;
             }
-        } else if (pl_num == 12) {
+        } else if (pl_num === 12) {
             this.all_files[2].calcRawValues(jd, jd_frac, pos, vel);
         } else if (pl_num < 12) {
             this.all_files[pl_num - 1].calcRawValues(jd, jd_frac, pos, vel);
@@ -105,9 +103,9 @@ EpmCalculator.prototype = {
             this.calcBarycentric(pl_num, jd, jd_frac, pos, vel);
             this.calcBarycentric(centr_num, jd, jd_frac, pos1, vel1);
 
-            for (var i = 0; i < 3; i++) {
-                pos[i] -= pos1[i];
-                vel[i] -= vel1[i];
+            for (var j = 0; j < 3; j++) {
+                pos[j] -= pos1[j];
+                vel[j] -= vel1[j];
             }
         }
     },

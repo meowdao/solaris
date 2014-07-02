@@ -35,6 +35,8 @@ module.exports = function (config, app) {
     app.use(session({
         secret: "keyboardcat",
         key: "sid",
+        resave: false,
+        saveUninitialized: true,
         cookie: {
             //domain : ".mydomain.com",
             //path: "/",
@@ -43,7 +45,9 @@ module.exports = function (config, app) {
             secure: false
         }
     }));
-    app.use(bodyParser());
+    app.use(bodyParser.urlencoded({
+        extended:true
+    }));
     app.use(favicon(config.path.root + "/dist/img/favicon.ico"));
 
     require("../routes/index.js")(app);

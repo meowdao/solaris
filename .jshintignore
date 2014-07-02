@@ -1,2 +1,2 @@
-assets/javascripts/intro.js
-assets/javascripts/outro.js
+utils/calendar/astro.js
+utils/calendar/calendar.js

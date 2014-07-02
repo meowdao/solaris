@@ -16,10 +16,11 @@ EpmCalculatorTest.prototype = {
         var jd_frac = 0.5003725;
         var xv = [];
         var vv = [];
+        var pl_num;
 
         for (var centr_num = 1; centr_num <= 12; centr_num++) {
             console.log("Coordinates w.r.t. body #%d\n", centr_num);
-            for (var pl_num = 1; pl_num <= 12; pl_num++) {
+            for (pl_num = 1; pl_num <= 12; pl_num++) {
                 epmc.calcWrt(pl_num, centr_num, jd, jd_frac, xv, vv);
                 console.log("%d\n", pl_num);
                 console.log(xv[0], xv[1], xv[2]);
@@ -27,7 +28,7 @@ EpmCalculatorTest.prototype = {
             }
         }
         console.log("Barycentric coordinates\n");
-        for (var pl_num = 1; pl_num <= 12; pl_num++) {
+        for (pl_num = 1; pl_num <= 12; pl_num++) {
             epmc.calcBarycentric(pl_num, jd, jd_frac, xv, vv);
             console.log("%d\n", pl_num);
             console.log(xv[0], xv[1], xv[2]);

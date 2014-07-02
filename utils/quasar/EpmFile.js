@@ -45,7 +45,7 @@ EpmFile.prototype = {
         this.num_subintervals = this.getInt();
 
         if (this.dimension !== 3 && this.dimension !== 1) {
-            throw new Exception("bad EPM dimension");
+            throw new Error("bad EPM dimension");
         }
     },
     calc_pos: function (ncoef, antiderivative, coef, delta) {

@@ -26,13 +26,13 @@ var methods = {
         for (var i = 0, j = query.days, array = [], xv = [], vv = []; i < j; i += step, xv = [], vv = []) {
             if (query.object <= 12) {
                 epmc.calcWrt(query.object, query.center, jd - i, 0.5, xv, vv);
-                array.push({xv: xv, vv: vv})
+                array.push({xv: xv, vv: vv});
             } else {
                 epmc.calcWrtDwarf(query.object - 12, query.center, jd - i, 0.5, xv, vv);
-                array.push({xv: xv, vv: vv})
+                array.push({xv: xv, vv: vv});
             }
         }
-        return Q(array)
+        return Q(array);
     }
 };
 

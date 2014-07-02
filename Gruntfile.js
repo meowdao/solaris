@@ -27,7 +27,8 @@ module.exports = function (grunt) {
                     "Gruntfile.js",
                     "configs/*",
                     "controllers/*",
-                    "utils/*"                ],
+                    "utils/*"
+                ],
                 options: {
                     jshintrc: ".jshintrc"
                 }
@@ -43,7 +44,7 @@ module.exports = function (grunt) {
                 files: {
                     "dist/css/common.min.css": "assets/css/common.scss",
                     "dist/css/styles.min.css": "assets/css/styles.scss",
-                    "dist/css/normalize.min.css": "assets/vendors/normalize.css/normalize.css"
+                    "dist/css/normalize.min.css": "dist/vendors/normalize.css/normalize.css"
                 }
             },
             dev: {
@@ -55,7 +56,7 @@ module.exports = function (grunt) {
                 files: {
                     "dist/css/common.min.css": "assets/css/common.scss",
                     "dist/css/styles.min.css": "assets/css/styles.scss",
-                    "dist/css/normalize.min.css": "assets/vendors/normalize.css/normalize.css"
+                    "dist/css/normalize.min.css": "dist/vendors/normalize.css/normalize.css"
                 }
             }
         },
@@ -157,7 +158,9 @@ module.exports = function (grunt) {
             }
         },
         qunit: {
-            all: ["test/index.html"]
+            all: [
+                "test/index.html"
+            ]
         }
     });
 
@@ -171,8 +174,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-requirejs");
 
     // Default task(s).
-    grunt.registerTask("default", ["build", "jshint", "uglify", "sass", "copy", "compare_size"]);
-    grunt.registerTask("travis", ["build", "jshint", "uglify", "sass", "compare_size"]);
+    grunt.registerTask("default", ["requirejs", "jshint", "sass:dev", "copy", "compare_size"]);
+    grunt.registerTask("travis", ["requirejs", "jshint", "sass:dist", "compare_size", "qunit"]);
     grunt.registerTask("test", ["qunit"]);
 
 };
