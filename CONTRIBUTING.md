@@ -1,1 +1,1 @@
-You are welcome to push to this repo
+Contributions are welcomed.
