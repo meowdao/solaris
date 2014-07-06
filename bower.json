@@ -16,10 +16,8 @@
         "requirejs": "2.1.8",
         "jquery": "2.1.0",
         "jquery-ui": "1.11.0",
-        "qunit": "1.14.0",
         "globalize": "0.1.1",
-        "normalize.css": "3.0.0",
-        "q": "1.0.1"
+        "normalize.css": "3.0.1"
     }
 }
 

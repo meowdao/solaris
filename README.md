@@ -18,10 +18,20 @@ To make the first build run:
 
 ```bash
 ./install.sh
-node server
 ```
 
-Then navigate to [http://localhost:8888/test](http://localhost:8888/test) in your browser
+Then run node server
+```bash
+node server.js
+```
+
+And navigate to [http://localhost:8888/test](http://localhost:8888/test) in your browser
+
+Demo
+----
+
+![Alt text](docs/assets/demo.png?raw=true "Demo")
+
 
 IPA RAN
 -------

@@ -31,9 +31,6 @@ define(["require",
                     this._views[view] = new (require("../models/" + dir + "/" + view))(options, shared);
                 }, this);
             }, this);
-            /*$.ajaxPrefilter(function (options, originalOptions) {
-                options.data = $.param($.extend(originalOptions.data, { center: this._options.center }));
-            }.bind(this));*/
         },
         draw: function () {
             this._draw(this);
@@ -43,14 +40,14 @@ define(["require",
             _.forEach(obj._views, function (view) {
                 //console.log("SolarSystemView:drawing", view);
                 if (view instanceof AbstractObject) {
-                    view.getPosition({center:this._params.center}).then(function (position) {
+                    view.getPosition({center: this._params.center}).then(function (position) {
                         this._drawObject(position, view);
                         if (view._options.label) {
                             this._drawLabel(position, view);
                         }
                     }.bind(this));
                 } else if (view instanceof Orbit) {
-                    view.getPositions({center:this._params.center}).then(function (positions) {
+                    view.getPositions({center: this._params.center}).then(function (positions) {
                         this._drawOrbit(positions, view);
                     }.bind(this));
                 } else if (view instanceof Label) {
@@ -64,8 +61,8 @@ define(["require",
             this._context.save();
             this._context.beginPath();
             this._context.arc(
-                (this._size.width / 2 + position.xv[0] * constants.au / 1e6 / this._params.scale),
-                (this._size.height / 2 + position.xv[1] * constants.au / 1e6 / this._params.scale),
+                (this._size.width / 2 + position[0] * constants.au / 1e6 / this._params.scale),
+                (this._size.height / 2 + position[1] * constants.au / 1e6 / this._params.scale),
                 5, //(this._params.radius / 1e5),
                 0, 2 * Math.PI, false);
             this._context.fillStyle = view._options.color;
@@ -77,11 +74,11 @@ define(["require",
             //console.log("then", this._options)
             this._context.save();
             this._context.beginPath();
-            //console.log("moveto", this._size.width / 2 + positions[0].xv[0] * au / 1e6, this._size.height / 2 + positions[0].xv[1] * au / 1e6)
-            this._context.moveTo(this._size.width / 2 + positions[0].xv[0] * constants.au / 1e6 / this._params.scale, this._size.height / 2 + positions[0].xv[1] * constants.au / 1e6 / this._params.scale);
+            //console.log("moveto", this._size.width / 2 + positions[0[0] * au / 1e6, this._size.height / 2 + positions[0][1] * au / 1e6)
+            this._context.moveTo(this._size.width / 2 + positions[0][0] * constants.au / 1e6 / this._params.scale, this._size.height / 2 + positions[0][1] * constants.au / 1e6 / this._params.scale);
             for (var i = 1, j = positions.length; i < j; i++) {
-                //console.log(i, this._size.width / 2 + positions[i].xv[0] * au / 1e6, this._size.height / 2 + positions[i].xv[1] * au / 1e6)
-                this._context.lineTo(this._size.width / 2 + positions[i].xv[0] * constants.au / 1e6 / this._params.scale, this._size.height / 2 + positions[i].xv[1] * constants.au / 1e6 / this._params.scale);
+                //console.log(i, this._size.width / 2 + positions[i][0] * au / 1e6, this._size.height / 2 + positions[i][1] * au / 1e6)
+                this._context.lineTo(this._size.width / 2 + positions[i][0] * constants.au / 1e6 / this._params.scale, this._size.height / 2 + positions[i][1] * constants.au / 1e6 / this._params.scale);
             }
             this._context.strokeStyle = view._options.color;
             this._context.stroke();
@@ -93,8 +90,8 @@ define(["require",
             //this._context.fillStyle = view._options.color;
             this._context.fillStyle = view._views.label._options.color;
             this._context.font = "bold 12px sans-serif";
-            //this._context.fillText(view._options.name, this._size.width / 2 + position.xv[0] * constants.au / 1e6 / this._params.scale + 10, this._size.height / 2 + position.xv[1] * constants.au / 1e6 / this._params.scale + 10);
-            this._context.fillText(view._params.name, this._size.width / 2 + position.xv[0] * constants.au / 1e6 / this._params.scale + 10, this._size.height / 2 + position.xv[1] * constants.au / 1e6 / this._params.scale + 10);
+            //this._context.fillText(view._options.name, this._size.width / 2 + position[0] * constants.au / 1e6 / this._params.scale + 10, this._size.height / 2 + position[1] * constants.au / 1e6 / this._params.scale + 10);
+            this._context.fillText(view._params.name, this._size.width / 2 + position[0] * constants.au / 1e6 / this._params.scale + 10, this._size.height / 2 + position[1] * constants.au / 1e6 / this._params.scale + 10);
             this._context.restore();
         }
     });

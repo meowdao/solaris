@@ -1,6 +1,6 @@
 "use strict";
 
-var fs = require("fs");
+var BufferedByteStream = require("./BufferedByteStream.js");
 
 var EpmFile = function () {
     return this.init.apply(this, Array.prototype.slice.call(arguments));
@@ -14,55 +14,36 @@ EpmFile.prototype = {
     num_coefficients: null,
     dimension: null,
     num_subintervals: null,
-    stream: null,
 
-    position: 0,
-
-    getInt: function () {
-        var buffer = new Buffer(4);
-        fs.readSync(this.fd, buffer, 0, buffer.length, this.position);
-        this.position += buffer.length;
-        return buffer.readInt32LE(0);
-    },
-
-    getDouble: function () {
-        var buffer = new Buffer(8);
-        fs.readSync(this.fd, buffer, 0, buffer.length, this.position);
-        this.position += buffer.length;
-        return buffer.readDoubleLE(0);
-    },
+    buffer: null,
 
     init: function (filename) {
-        this.fd = fs.openSync(filename, "r");
-
-        this.position = 0;
-
-        this.jd = this.getInt();
-        this.jd_frac = this.getDouble();
-        this.subinterval = this.getDouble();
-        this.num_coefficients = this.getInt();
-        this.dimension = this.getInt();
-        this.num_subintervals = this.getInt();
-
-        if (this.dimension !== 3 && this.dimension !== 1) {
-            throw new Error("bad EPM dimension");
-        }
+        this.buffer = new BufferedByteStream(filename);
+        this.buffer.on("error", function () {
+            console.log("error: " + filename);
+        });
+        this.buffer.on("ready", function () {
+            console.log("ready: " + filename);
+            this.jd = this.buffer.getInt(0);
+            this.jd_frac = this.buffer.getDouble(4);
+            this.subinterval = this.buffer.getDouble(12);
+            this.num_coefficients = this.buffer.getInt(20);
+            this.dimension = this.buffer.getInt(24);
+            this.num_subintervals = this.buffer.getInt(28);
+        }.bind(this));
     },
+
     calc_pos: function (ncoef, antiderivative, coef, delta) {
-
         var x = 0.0;
-
         for (var i = ncoef - 1; i >= 0; i--) {
             x += coef[i] * antiderivative[i];
         }
-
         x = 0.5 * delta * x + coef[ncoef];
         return x;
     },
 
     calc_vel: function (ncoef, polynomials, coef) {
         var v = 0.0;
-
         for (var i = ncoef - 1; i >= 0; i--) {
             v += coef[i] * polynomials[i];
         }
@@ -102,8 +83,7 @@ EpmFile.prototype = {
         }
     },
 
-    calcRawValues: function (jd, jd_frac, pos, vel) {
-        var coefs = [];
+    calcRawValues: function (jd, jd_frac) {
         var polynomials = [];
         var antiderivatives = [];
 
@@ -118,21 +98,12 @@ EpmFile.prototype = {
 
         this.calc_cheb_pol(this.num_coefficients - 1, t, polynomials, antiderivatives);
 
-        for (var i = 0; i < this.dimension; i++) {
-            var offset = 32 + i_subinterval * this.dimension * 8 * this.num_coefficients + i * 8 * this.num_coefficients;
-
-            this.position = offset;
-
-            for (var j = 0; j < this.num_coefficients; j++) {
-                coefs[j] = this.getDouble();
-            }
-
-            pos[i] = this.calc_pos(this.num_coefficients - 1, antiderivatives, coefs, this.subinterval);
-            vel[i] = this.calc_vel(this.num_coefficients - 1, polynomials, coefs);
-        }
-    },
-    close: function () {
-        fs.closeSync(this.fd);
+        return Array.apply(null, new Array(this.dimension)).map(function (e, j) {
+            var array = Array.apply(null, new Array(this.num_coefficients)).map(function (e, i) {
+                return this.buffer.getDouble(32 + i_subinterval * this.dimension * 8 * this.num_coefficients + j * 8 * this.num_coefficients + i * 8);
+            }.bind(this));
+            return this.calc_pos(this.num_coefficients - 1, antiderivatives, array, this.subinterval)
+        }.bind(this));
     }
 };
 

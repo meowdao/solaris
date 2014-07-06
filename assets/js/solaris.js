@@ -33,7 +33,7 @@ require([
             earth: {orbit: {step:5, days:3000}},
         }}
     }});*/
-/*
+/**/
     // planets, dwarfs and satellites
     app.loadView("system", {
         stars: {
@@ -66,7 +66,7 @@ require([
             }
         }
     });
-*/
+/**/
 
 /*
     // planets only
@@ -86,6 +86,7 @@ require([
         }
     });
 */
+/*
     // dwarfs only
     app.loadView("system", {
         stars: {
@@ -102,7 +103,7 @@ require([
             }
         }
     });
-
+*/
 /*
     app.loadView("system", {
         planets: {

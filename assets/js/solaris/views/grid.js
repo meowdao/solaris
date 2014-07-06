@@ -17,6 +17,7 @@ define(function (require) {
             fillStyle: "#c0c0c0"
         },
         _init: function () {
+            // override abstract
             // does nothing
         },
         draw: function () {
