@@ -16,7 +16,7 @@ var BufferedByteStream = function (filename) {
     var input = fs.createReadStream(filename);
 
     input.on("data", function (buffer) {
-        _array.push(buffer)
+        _array.push(buffer);
     });
 
     input.on("end", function () {

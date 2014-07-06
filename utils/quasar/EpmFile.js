@@ -102,7 +102,7 @@ EpmFile.prototype = {
             var array = Array.apply(null, new Array(this.num_coefficients)).map(function (e, i) {
                 return this.buffer.getDouble(32 + i_subinterval * this.dimension * 8 * this.num_coefficients + j * 8 * this.num_coefficients + i * 8);
             }.bind(this));
-            return this.calc_pos(this.num_coefficients - 1, antiderivatives, array, this.subinterval)
+            return this.calc_pos(this.num_coefficients - 1, antiderivatives, array, this.subinterval);
         }.bind(this));
     }
 };
