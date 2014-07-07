@@ -1,8 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 
 npm install
 bower install
 bundle install
+
+grunt
 
 wget -m ftp://anonymous@quasar.ipa.nw.ru/incoming/EPM/Data/011m/ -np -A .bin
 mv quasar.ipa.nw.ru/incoming/EPM/Data/011m data/quasar/011m

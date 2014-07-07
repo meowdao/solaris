@@ -5,8 +5,9 @@ Simple 2d solar system :)
 
 Dependencies
 ------------
+You have to have nodejs and ruby to compile the project
 
-- node 0.10.28
+- nodejs 0.10.28
 - ruby 1.9.3
 
 It may work on lower versions but I have not tested it
@@ -16,8 +17,17 @@ Installation
 
 To make the first build run:
 
+copy `configs/config.sample.js` to `configs/config.js`
+
+Install `grunt-cli` `bower`
+installing globally is a preferred way for both packages
+```
+npm install -g grunt-cli bower
+```
+
+Download all required packages and data
 ```bash
-./install.sh
+bash install.sh
 ```
 
 Then run node server
