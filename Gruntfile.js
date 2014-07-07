@@ -34,36 +34,34 @@ module.exports = function (grunt) {
                 }
             }
         },
-        sass: {
-            dist: {
+        less: {
+            production: {
                 options: {
-                    //sourcemap: true
-                    bundleExec: true,
-                    style: "compressed"
+                    paths: ["assets/css"],
+                    compress: true
                 },
                 files: {
-                    "dist/css/common.min.css": "assets/css/common.scss",
-                    "dist/css/styles.min.css": "assets/css/styles.scss",
+                    "dist/css/common.min.css": "assets/css/common.less",
+                    "dist/css/styles.min.css": "assets/css/styles.less",
                     "dist/css/normalize.min.css": "dist/vendors/normalize.css/normalize.css"
                 }
             },
-            dev: {
+            development: {
                 options: {
-                    lineNumbers: true,
-                    bundleExec: true,
-                    style: "expanded"
+                    paths: ["assets/css"],
+                    compress: false
                 },
                 files: {
-                    "dist/css/common.min.css": "assets/css/common.scss",
-                    "dist/css/styles.min.css": "assets/css/styles.scss",
+                    "dist/css/common.min.css": "assets/css/common.less",
+                    "dist/css/styles.min.css": "assets/css/styles.less",
                     "dist/css/normalize.min.css": "dist/vendors/normalize.css/normalize.css"
                 }
             }
         },
         watch: {
             style: {
-                files: ["assets/css/*.scss"],
-                tasks: ["sass"],
+                files: ["assets/css/*.less"],
+                tasks: ["less"],
                 options: {
                     nospawn: true,
                     debounceDelay: 500
@@ -71,7 +69,7 @@ module.exports = function (grunt) {
             },
             script: {
                 files: ["assets/js/*.js"],
-                tasks: ["build", "jshint"],
+                tasks: ["jshint", "requirejs:compileApp"],
                 options: {
                     nospawn: true,
                     debounceDelay: 500
@@ -166,7 +164,7 @@ module.exports = function (grunt) {
 
     // Load grunt tasks from NPM packages
     grunt.loadNpmTasks("grunt-contrib-jshint");
-    grunt.loadNpmTasks("grunt-contrib-sass");
+    grunt.loadNpmTasks("grunt-contrib-less");
     grunt.loadNpmTasks("grunt-contrib-watch");
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks("grunt-contrib-qunit");
@@ -174,8 +172,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-requirejs");
 
     // Default task(s).
-    grunt.registerTask("default", ["requirejs", "jshint", "sass:dev", "copy", "compare_size"]);
-    grunt.registerTask("travis", ["requirejs", "jshint", "sass:dist", "compare_size", "qunit"]);
+    grunt.registerTask("default", ["requirejs", "jshint", "less:development", "copy", "compare_size"]);
+    grunt.registerTask("travis", ["requirejs", "jshint", "less:production", "compare_size", "qunit"]);
     grunt.registerTask("test", ["qunit"]);
 
 };

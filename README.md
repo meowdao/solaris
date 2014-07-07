@@ -5,10 +5,9 @@ Simple 2d solar system :)
 
 Dependencies
 ------------
-You have to have nodejs and ruby to compile the project
+You have to have nodejs to run the project
 
-- nodejs 0.10.28
-- ruby 1.9.3
+- nodejs 0.10.29
 
 It may work on lower versions but I have not tested it
 
