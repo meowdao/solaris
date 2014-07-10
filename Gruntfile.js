@@ -176,7 +176,7 @@ module.exports = function (grunt) {
 
     // Default task(s).
     grunt.registerTask("default", ["jshint", "requirejs", "less:development", "copy", "compare_size"]);
-    grunt.registerTask("travis", ["jshint", "requirejs", "less:production", "compare_size", "qunit"]);
+    grunt.registerTask("travis", ["jshint", "requirejs", "less:production", "compare_size"]);
     grunt.registerTask("test", ["qunit"]);
 
 };
