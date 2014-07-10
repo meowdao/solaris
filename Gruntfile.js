@@ -112,6 +112,8 @@ module.exports = function (grunt) {
                     preserveLicenseComments: false,
                     generateSourceMaps: true,
                     paths: {
+                        "backbone": "empty:",
+                        "handlebars": "empty:",
                         "jquery": "empty:",
                         "underscore": "empty:"
                     }
@@ -144,8 +146,7 @@ module.exports = function (grunt) {
         },
         compare_size: {
             files: [
-                "dist/js/app.min.js",
-                "dist/js/client.min.js",
+                "dist/js/solaris.min.js",
                 "dist/css/styles.min.css"
             ],
             options: {
