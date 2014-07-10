@@ -4,7 +4,7 @@ define(["require",
     "use strict";
 
     var AbstractView = require("./abstract");
-    var _ = require("LoDash");
+    var _ = require("underscore");
     var $ = require("jquery");
 
     // http://en.wikipedia.org/wiki/Solar_System
@@ -15,7 +15,7 @@ define(["require",
 
     _.extend(HypotrochoidView.prototype, {
         _init: function (options) {
-            console.log("HypotrochoidView", options)
+            console.log("HypotrochoidView", options);
             _.forEach(options.sub, function (options, view) {
                 this._views[view] = new (require("../models/stars/" + view))(this._context, options);
             }, this);

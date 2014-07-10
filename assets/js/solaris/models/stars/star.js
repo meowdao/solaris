@@ -2,7 +2,7 @@ define(function (require) {
     "use strict";
 
     var SpaceObject = require("../object");
-    var _ = require("LoDash");
+    var _ = require("underscore");
 
     var AbstractStar = function () {
 

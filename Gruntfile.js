@@ -6,11 +6,10 @@ module.exports = function (grunt) {
 
     // Project configuration.
     grunt.initConfig({
-        pkg: grunt.file.readJSON("package.json"),
         jshint: {
             dist: {
                 src: [
-                    "assets/js/*.js"
+                    "assets/js/**/*.js"
                 ],
                 options: {
                     jshintrc: "assets/js/.jshintrc"
@@ -104,7 +103,7 @@ module.exports = function (grunt) {
             }
         },
         requirejs: {
-            compileApp: {
+            app: {
                 options: {
                     baseUrl: "assets/js",
                     name: "solaris",
@@ -114,29 +113,32 @@ module.exports = function (grunt) {
                     generateSourceMaps: true,
                     paths: {
                         "jquery": "empty:",
-                        "LoDash": "empty:"
+                        "underscore": "empty:"
                     }
                 }
             },
-            compileClient: {
-                options: {
-                    baseUrl: "assets/js/",
-                    mainConfigFile: "assets/js/client.js",
-                    name: "client",
-                    out: "dist/js/client.min.js",
-                    optimize: "uglify2",
-                    preserveLicenseComments: false,
-                    generateSourceMaps: true,
-                    paths: {
-                        "jquery": "empty:",
-                        "jquery-UI": "empty:"
-                    }
-                }
-            },
-            compileRequirejs: {
+            requirejs: {
                 options: {
                     name: "dist/vendors/requirejs/require",
                     out: "dist/vendors/requirejs/require.min.js"
+                }
+            }
+        },
+        handlebars: {
+            templates: {
+                options: {
+                    amd: true,
+                    partialRegex: /.*/,
+                    partialsPathRegex: /\/partials\//,
+                    processPartialName: function (path) {
+                        return path.replace(/^views\/partials\/(.+)\.hbs/, "$1");
+                    },
+                    processName: function (filename) {
+                        return filename.replace("views/", "").replace(".hbs", "");
+                    }
+                },
+                files: {
+                    "assets/js/templates.js": "views/**/*.hbs"
                 }
             }
         },
@@ -163,17 +165,18 @@ module.exports = function (grunt) {
     });
 
     // Load grunt tasks from NPM packages
+    grunt.loadNpmTasks("grunt-contrib-copy");
+    grunt.loadNpmTasks("grunt-contrib-handlebars");
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-contrib-less");
-    grunt.loadNpmTasks("grunt-contrib-watch");
-    grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks("grunt-contrib-qunit");
-    grunt.loadNpmTasks("grunt-compare-size");
     grunt.loadNpmTasks("grunt-contrib-requirejs");
+    grunt.loadNpmTasks("grunt-contrib-watch");
+    grunt.loadNpmTasks("grunt-compare-size");
 
     // Default task(s).
-    grunt.registerTask("default", ["requirejs", "jshint", "less:development", "copy", "compare_size"]);
-    grunt.registerTask("travis", ["requirejs", "jshint", "less:production", "compare_size", "qunit"]);
+    grunt.registerTask("default", ["jshint", "requirejs", "less:development", "copy", "compare_size"]);
+    grunt.registerTask("travis", ["jshint", "requirejs", "less:production", "compare_size", "qunit"]);
     grunt.registerTask("test", ["qunit"]);
 
 };

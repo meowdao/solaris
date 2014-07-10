@@ -2,19 +2,21 @@ define(function (require) {
     "use strict";
 
     var AbstractView = require("./abstract");
-    var _ = require("LoDash");
+    var _ = require("underscore");
 
     var VoidView = function () {
         return this.init.apply(this, Array.prototype.slice.call(arguments));
     };
+
     VoidView.prototype = new AbstractView();
 
     _.extend(VoidView.prototype, {
         _options: {
             color: "#000000"
         },
-        _init: function(){
+        _init: function(options){
             // does nothing
+            void(options);
         },
         draw: function () {
             this._context.save();
@@ -23,8 +25,6 @@ define(function (require) {
             this._context.restore();
         }
     });
-
-    console.log(VoidView.prototype);
 
     return VoidView;
 });

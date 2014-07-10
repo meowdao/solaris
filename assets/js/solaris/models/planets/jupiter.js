@@ -2,6 +2,7 @@ define(function (require) {
     "use strict";
 
     var AbstractPlanet = require("./planet");
+    var _ = require("underscore");
 
     var Jupiter = function () {
         return this.init.apply(this, Array.prototype.slice.call(arguments));

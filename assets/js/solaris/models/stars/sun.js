@@ -19,12 +19,12 @@ define(["require",
     "../dwarfs/sedna",
     "../dwarfs/haumea",
     "../dwarfs/eris",
-    "../dwarfs/makemake",
+    "../dwarfs/makemake"
 ], function (require) {
     "use strict";
 
     var AbstractStar = require("./star");
-    var _ = require("LoDash");
+    var _ = require("underscore");
 
     var Sun = function () {
         return this.init.apply(this, Array.prototype.slice.call(arguments));

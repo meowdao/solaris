@@ -1,8 +1,7 @@
 define(function (require) {
     "use strict";
 
-    var _ = require("LoDash");
-    var $ = require("jquery");
+    var _ = require("underscore");
 
     // abstract class
     var Label = function () {

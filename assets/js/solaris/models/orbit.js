@@ -1,9 +1,8 @@
 define(function (require) {
     "use strict";
 
-    var _ = require("LoDash");
+    var _ = require("underscore");
     var $ = require("jquery");
-    var constants = require("../constants");
 
     // abstract class
     var Orbit = function () {

@@ -2,7 +2,7 @@ define(function (require) {
     "use strict";
 
     var AbstractView = require("./abstract");
-    var _ = require("LoDash");
+    var _ = require("underscore");
 
     var GridView = function () {
         return this.init.apply(this, Array.prototype.slice.call(arguments));

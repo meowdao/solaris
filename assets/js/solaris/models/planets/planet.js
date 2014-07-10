@@ -2,7 +2,7 @@ define(function (require) {
     "use strict";
 
     var AbstractObject = require("../object");
-    var _ = require("LoDash");
+    var _ = require("underscore");
 
     // abstract class
     var AbstractPlanet = function () {

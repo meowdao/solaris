@@ -2,7 +2,7 @@ define(function (require) {
     "use strict";
 
     var AbstractPlanet = require("./dwarf");
-    var _ = require("LoDash");
+    var _ = require("underscore");
 
     var Sedna = function () {
         return this.init.apply(this, Array.prototype.slice.call(arguments));

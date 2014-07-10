@@ -2,8 +2,7 @@ define(function (require) {
     "use strict";
 
     var AbstractObject = require("../object");
-    var _ = require("LoDash");
-    var $ = require("jquery");
+    var _ = require("underscore");
 
     // abstract class
     var AbstractDwarf = function () {

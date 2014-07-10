@@ -1,7 +1,7 @@
 define(function (require) {
     "use strict";
 
-    var _ = require("LoDash");
+    var _ = require("underscore");
 
     var AbstractBelt = function () {
 
@@ -10,6 +10,7 @@ define(function (require) {
     _.extend(AbstractBelt.prototype, {
         _init: function (options) {
             // does nothing
+            void(options);
         }
     });
 

@@ -4,7 +4,7 @@ define(["require",
     "use strict";
 
     var AbstractPlanet = require("./planet");
-    var _ = require("LoDash");
+    var _ = require("underscore");
 
     var Earth = function () {
         return this.init.apply(this, Array.prototype.slice.call(arguments));

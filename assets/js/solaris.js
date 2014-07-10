@@ -1,128 +1,64 @@
 require.config({
     map: {
+        "backbone.config": {
+            "backbone": "backbone"
+        },
+        "handlebars.config": {
+            "handlebars": "handlebars"
+        },
         "jquery.config": {
             "jquery": "jquery"
         },
+        "underscore.config": {
+            "underscore": "underscore"
+        },
         "*": {
-            "jquery": "jquery.config"
+            "backbone": "backbone.config",
+            "handlebars": "handlebars.config",
+            "jquery": "jquery.config",
+            "underscore": "underscore.config"
+        }
+    },
+    shim: {
+        handlebars: {
+            exports: "Handlebars"
         }
     },
     paths: {
-        "solaris": "/js/solaris",
-        "LoDash": "/vendors/lodash/dist/lodash",
+        "backbone": "/vendors/backbone/backbone",
+        "backbone.config": "/js/config/backbone.config",
+        "handlebars": "/vendors/handlebars/handlebars.min",
+        "handlebars.config": "/js/config/handlebars.config",
         "jquery": "/vendors/jquery/dist/jquery.min",
-        "jquery.config": "/js/config/jquery.config"
+        "jquery.config": "/js/config/jquery.config",
+        "jquery-ui": "/vendors/jquery-ui/ui",
+        "solaris": "/js/solaris",
+        "underscore": "/vendors/underscore/underscore",
+        "underscore.config": "/js/config/underscore.config"
     }
 });
 
 require([
-    "solaris/core"
-], function (Solaris) {
+    "jquery",
+    "backbone",
+    "client/routes/main",
+    "templates"
+], function ($, backbone, Routes) {
     "use strict";
 
-    var app = new Solaris(document.getElementById("solaris"), {
-        center: 11,
-        scale: 35
-    });
-    app.loadView("void");
-    app.loadView("grid");
-    //app.loadView("system", {sub: {sun: {sub: {earth: {sub: {moon: {}}}}}}});
-    /*app.loadView("hypotrochoid", {sub: {
-        sun: {sub: {
-            venus: {orbit: {step:5, days:3000}},
-            earth: {orbit: {step:5, days:3000}},
-        }}
-    }});*/
-/**/
-    // planets, dwarfs and satellites
-    app.loadView("system", {
-        stars: {
-            sun: {
-                planets: {
-                    mercury: {orbit: true},
-                    venus: {orbit: true},
-                    earth: {
-                        orbit: true,
-                        satellites: {
-                            moon: {orbit: true}
-                        }
-                    },
-                    mars: {orbit: true},
-                    jupiter: {orbit: true},
-                    saturn: {orbit: true},
-                    uranus: {orbit: true},
-                    neptune: {orbit: true},
-                    pluto: {orbit: true},
-                },
-                dwarfs: {
-                    ceres: {orbit: true},
-                    pallas: {orbit: true},
-                    vesta: {orbit: true},
-                    sedna: {orbit: true},
-                    haumea: {orbit: true},
-                    makemake: {orbit: true},
-                    eris: {orbit: true},
-                }
-            }
+    // http://robdodson.me/blog/2012/05/21/exploring-the-backbone-router-and-history-api/
+    // http://stackoverflow.com/questions/9328513/backbone-js-and-pushstate
+    $(document.body).on("click", "a[href]:not([data-bypass])", function (e) {
+        if (new RegExp("^((f|ht)tps?:)?//" + location.host).test(this.href)) {
+            e.preventDefault();
+            backbone.history.navigate(this.pathname, true);
         }
     });
-/**/
 
-/*
-    // planets only
-    app.loadView("system", {
-        stars: {
-            sun: {
-                planets: {
-                    mercury: {orbit: true},
-                    venus: {orbit: true},
-                    earth: {orbit: true},
-                    mars: {orbit: true},
-                    jupiter: {orbit: true},
-                    saturn: {orbit: true},
-                    uranus: {orbit: true},
-                }
-            }
-        }
-    });
-*/
-/*
-    // dwarfs only
-    app.loadView("system", {
-        stars: {
-            sun: {
-                dwarfs: {
-                    ceres: {orbit: true},
-                    pallas: {orbit: true},
-                    vesta: {orbit: true},
-                    sedna: {orbit: true},
-                    haumea: {orbit: true},
-                    makemake: {orbit: true},
-                    eris: {orbit: true}
-                }
-            }
-        }
-    });
-*/
-/*
-    app.loadView("system", {
-        planets: {
-            earth: {
-                label: true,
-                satellites: {
-                    moon: {
-                        label: {
-                            color: "blue"
-                        },
-                        orbit: {
-                            color: "red"
-                        }
-                    }
-                }
-            }
-        }
-    });
-*/
+    new Routes();
+
+    // // https://blog.isotoma.com/2014/01/backbone-history-and-ie9/
+    backbone.history.start({pushState: true});
     console.log("APP");
 });
 

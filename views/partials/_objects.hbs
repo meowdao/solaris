@@ -1,0 +1,11 @@
+{{#each sections}}
+	<fieldset>
+		<legend>{{@key}}</legend>
+        {{#each this}}
+			<div>
+				<input type="checkbox" name="{{this}}" id="{{this}}"/>
+				<label for="{{this}}">{{this}}</label>
+			</div>
+        {{/each}}
+	</fieldset>
+{{/each}}

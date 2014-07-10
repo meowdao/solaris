@@ -6,7 +6,7 @@ define(["require",
 ], function (require) {
     "use strict";
 
-    var _ = require("LoDash");
+    var _ = require("underscore");
 
     var Solaris = function () {
         return this.init.apply(this, Array.prototype.slice.call(arguments));

@@ -2,7 +2,8 @@ define(["require",
     "../models/object",
     "../models/orbit",
     "../models/label",
-    "../models/stars/sun"
+    "../models/stars/sun",
+    "../constants"
 ], function (require) {
     "use strict";
 
@@ -10,7 +11,7 @@ define(["require",
     var AbstractObject = require("../models/object");
     var Orbit = require("../models/orbit");
     var Label = require("../models/label");
-    var _ = require("LoDash");
+    var _ = require("underscore");
     var constants = require("../constants");
 
     // http://en.wikipedia.org/wiki/Solar_System
@@ -52,6 +53,7 @@ define(["require",
                     }.bind(this));
                 } else if (view instanceof Label) {
                     // already handled, do nothing
+                    void(0); // suppress warning
                 } // TODO add rings
                 this._draw(view);
             }, this);

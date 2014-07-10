@@ -4,7 +4,7 @@ define(function (require) {
     // has satellite Dysnomia
 
     var AbstractPlanet = require("./dwarf");
-    var _ = require("LoDash");
+    var _ = require("underscore");
 
     var Ceres = function () {
         return this.init.apply(this, Array.prototype.slice.call(arguments));

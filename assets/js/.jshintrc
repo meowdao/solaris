@@ -21,7 +21,11 @@
 	"node": true,
 
 	"globals": {
-		"jQuery": true,
-		"Solaris": true
+        "Backbone": true,
+
+        "define": true,
+        "require": true
+
+
 	}
 }
