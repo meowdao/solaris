@@ -17,6 +17,9 @@ define(function (require) {
         init: function (options) {
             //console.log("Label:init", options, this._options)
             this._options = _.extend({}, this._optionsDefault, options);
+        },
+        abort: function(){
+            // do nothing
         }
     };
 

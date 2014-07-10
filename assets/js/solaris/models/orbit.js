@@ -15,6 +15,7 @@ define(function (require) {
         _optionsDefault: {
             color: "#ffffff"
         },
+        _promise: null,
         init: function (options) {
             //console.log("Orbit:init", options, this._options)
             this._options = _.extend({}, this._optionsDefault, options);
@@ -24,7 +25,7 @@ define(function (require) {
                 end = new Date(2230, 0, 1),
                 diff = ~~((end - start) / 1000 / 60 / 60 / 24); // -1 ?
             //console.log("Orbit:getPositions",this._options)
-            return $.ajax({
+            this._promise = $.ajax({
                 url: "/ephemeris/getObjectOrbit",
                 data: {
                     date: start.toISOString().slice(0, 10),
@@ -34,6 +35,13 @@ define(function (require) {
                     center: data.center
                 }
             });
+            return this._promise;
+        },
+        abort: function () {
+            if (this._promise) {
+                this._promise.abort();
+                this._promise = null;
+            }
         }
     };
 

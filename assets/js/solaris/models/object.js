@@ -56,8 +56,17 @@ define(["require",
                 }, this);
             }, this);
         },
+        abort: function(){
+            if (this._promise) {
+                this._promise.abort();
+                this._promise = null;
+            }
+            _.forEach(this._views, function (view) {
+                view.abort();
+            }, this);
+        },
         getPosition: function (data) {
-            return $.ajax({
+            this._promise = $.ajax({
                 url: "/ephemeris/getObject",
                 data: {
                     date: new Date().toISOString().slice(0, 10),
@@ -65,6 +74,7 @@ define(["require",
                     center: data.center
                 }
             });
+            return this._promise;
         },
         getAverageOrbit: function () {
             //console.log("Z", this)

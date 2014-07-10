@@ -23,13 +23,13 @@ define(["require",
 
     _.extend(SolarSystemView.prototype, {
         _views: {},
-        _init: function (options, shared) {
+        _init: function (options) {
             //console.log("SolarSystemView", options, shared);
             _.forEach(options, function (views, dir) {
                 //console.log("views dir",views, dir)
                 _.forEach(views, function (options, view) {
                     //console.log("options view",options, view)
-                    this._views[view] = new (require("../models/" + dir + "/" + view))(options, shared);
+                    this._views[view] = new (require("../models/" + dir + "/" + view))(options);
                 }, this);
             }, this);
         },

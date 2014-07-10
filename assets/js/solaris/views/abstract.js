@@ -38,6 +38,11 @@ define(function (require) {
         loadViews: function(){
             // abstract
             throw "Abstract method not implemented";
+        },
+        abort: function(){
+            _.forEach(this._views, function (view) {
+                view.abort();
+            });
         }
     };
 

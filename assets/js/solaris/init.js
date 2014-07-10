@@ -36,7 +36,7 @@ define(["require", "solaris/core"], function (require) {
                     saturn: {orbit: true},
                     uranus: {orbit: true},
                     neptune: {orbit: true},
-                    pluto: {orbit: true},
+                    pluto: {orbit: true}
                 },
                 dwarfs: {
                     ceres: {orbit: true},
@@ -45,7 +45,7 @@ define(["require", "solaris/core"], function (require) {
                     sedna: {orbit: true},
                     haumea: {orbit: true},
                     makemake: {orbit: true},
-                    eris: {orbit: true},
+                    eris: {orbit: true}
                 }
             }
         }

@@ -26,6 +26,7 @@ define(["require",
             //console.log("Solaris",view,options);
             this._views[view] = new (require("./views/" + view))(this._context, options, this._options);
             this._views[view].draw();
+            return this._views[view];
         },
         getView: function (view) {
             return this._views[view];
