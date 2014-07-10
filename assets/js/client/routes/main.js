@@ -8,10 +8,8 @@ define(function (require) {
             "": "index"
         },
         index: function () {
-            var formView = new (require("../views/form"))();
+            var formView = new (require("../views/index"))();
             formView.render();
-            var canvasView = new (require("../views/canvas"))();
-            canvasView.render();
         }
     });
 });
