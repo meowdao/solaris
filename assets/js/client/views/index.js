@@ -3,19 +3,26 @@ define(function (require) {
 
     var backbone = require("backbone");
     var handlebars = require("handlebars");
-   
+
     var solaris = require("solaris/init");
 
     var config = {
         stars: {
             sun: {
+                body: true,
                 planets: {
                     jupiter: {
-                        orbit: true,
-                        label: true
+                        orbit: {
+                            color: "#ff00ff"
+                        },
+                        label: {
+                            color: "#ffff00"
+                        },
+                        body: true
                     },
                     saturn: {
-                        orbit: true
+                        orbit: true,
+                        body: true
                     }
                 },
                 dwarfs: {}
@@ -71,6 +78,16 @@ define(function (require) {
                     delete config.stars.sun.dwarfs[e.name];
                 }
             });
+
+            var moon = this.$(e.target).find("[name=moon]").prop("checked");
+            if (moon && config.stars.sun.planets.earth) {
+                config.stars.sun.planets.earth.satellites = {
+                    moon: {
+                        orbit: orbits,
+                        label: labels
+                    }
+                }
+            }
 
             solaris(config);
 
