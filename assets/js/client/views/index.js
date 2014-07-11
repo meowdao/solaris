@@ -86,7 +86,7 @@ define(function (require) {
                         orbit: orbits,
                         label: labels
                     }
-                }
+                };
             }
 
             solaris(config);

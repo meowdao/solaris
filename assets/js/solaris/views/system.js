@@ -89,7 +89,7 @@ define(["require",
                 } else if (view instanceof Label) {
                     this._drawLabel(position, view);
                 } else { // AbstractObject do nothing
-
+                    void(0);
                 } // TODO add belt
 
                 this._draft.restore();
