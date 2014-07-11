@@ -12,7 +12,9 @@ define(function (require) {
 
     _.extend(Moon.prototype, {
         _optionsDefault: {
-            color: "#00ff00"
+            body: {
+                color: "#00ff00"
+            }
         },
         _params: {
             name: "Moon",

@@ -12,7 +12,9 @@ define(function (require) {
 
     _.extend(Makemake.prototype, {
         _optionsDefault: {
-            color: "#ffff00"
+            body: {
+                color: "#ffff00"
+            }
         },
         _params: {
             name: "Makemake",

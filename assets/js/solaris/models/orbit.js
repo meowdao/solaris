@@ -17,9 +17,10 @@ define(function (require) {
         },
         _promise: null,
         _cache: {},
-        init: function (options) {
+        init: function (options, params) {
             //console.log("Orbit:init", options, this._options)
             this._options = _.extend({}, this._optionsDefault, options);
+            this._params = params;
             this._cache = {}; // override prototype
         },
         getPositions: function (data) {
@@ -31,9 +32,9 @@ define(function (require) {
                 url: "/ephemeris/getObjectOrbit",
                 data: {
                     date: start.toISOString().slice(0, 10),
-                    days: this._options.days < diff ? this._options.days : diff,
-                    object: this._options.index,
-                    step: this._options.step,
+                    days: this._params.days < diff ? this._params.days : diff,
+                    object: this._params.index,
+                    step: this._params.step || 1,
                     center: data.center
                 }
             });
@@ -51,6 +52,10 @@ define(function (require) {
                     .then(draw);
             }
             return this._cache[data.center];
+        },
+        getAverageOrbit: function () {
+            //console.log("Z", this)
+            return (this._options.orbit.perihelion + this._options.orbit.aphelion) / 2;
         }
     };
 

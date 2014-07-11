@@ -12,7 +12,9 @@ define(function (require) {
 
     _.extend(Neptune.prototype, {
         _optionsDefault: {
-            color: "#ffffff"
+            body: {
+                color: "#ffffff"
+            }
         },
         _params: {
             name: "Neptune",

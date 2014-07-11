@@ -12,7 +12,9 @@ define(function (require) {
 
     _.extend(Mercury.prototype, {
         _optionsDefault: {
-            color: "#C0C0C0"
+            body: {
+                color: "#C0C0C0"
+            }
         },
         _params: {
             name: "Mercury",

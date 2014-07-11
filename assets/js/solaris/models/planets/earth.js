@@ -14,7 +14,9 @@ define(["require",
 
     _.extend(Earth.prototype, {
         _optionsDefault: {
-            color: "#0000ff"
+            body: {
+                color: "#0000ff"
+            }
         },
         _params: {
             name: "Earth",

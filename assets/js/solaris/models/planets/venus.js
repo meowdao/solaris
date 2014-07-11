@@ -12,7 +12,9 @@ define(function (require) {
 
     _.extend(Venus.prototype, {
         _optionsDefault: {
-            color: "#ffc0cb"
+            body: {
+                color: "#ffc0cb"
+            }
         },
         _params: {
             name: "Venus",

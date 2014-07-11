@@ -20,6 +20,12 @@ define(["require",
         init: function (element, options) {
             //console.log("Solaris", options);
             this._context = element.getContext("2d");
+            // TODO fix me
+            this._context.drawImageData = function (data) {
+                var img = new Image();
+                img.src = data;
+                this.drawImage(img, 0, 0);
+            };
             _.extend(this._options, options);
         },
         loadView: function (view, options) {
@@ -30,6 +36,9 @@ define(["require",
         },
         getView: function (view) {
             return this._views[view];
+        },
+        _clear: function () {
+            this._context.clearRect(0, 0, this._context.canvas.width, this._context.canvas.height);
         }
     };
 

@@ -12,7 +12,9 @@ define(function (require) {
 
     _.extend(Haumea.prototype, {
         _optionsDefault: {
-            color: "#00ffff"
+            body: {
+                color: "#00ffff"
+            }
         },
         _params: {
             name: "Haumea",

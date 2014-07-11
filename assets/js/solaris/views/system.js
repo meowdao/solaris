@@ -8,9 +8,11 @@ define(["require",
     "use strict";
 
     var AbstractView = require("./abstract");
-    var AbstractObject = require("../models/object");
+
+    var Body = require("../models/body");
     var Orbit = require("../models/orbit");
     var Label = require("../models/label");
+
     var _ = require("underscore");
     var constants = require("../constants");
 
@@ -41,13 +43,11 @@ define(["require",
             _.forEach(obj._views, function (view) {
                 //console.log("SolarSystemView:drawing", view);
                 view.getImage(this._extract(view), {center: this._params.center})
-                    .then(function (img) {
-                        this._context.drawImage(img, 0, 0);
-                    }.bind(this));
+                    .then(this._context.drawImageData.bind(this._context));
                 this._draw(view);
             }, this);
         },
-        _drawObject: function (position, view) {
+        _drawBody: function (position, view) {
             //console.log("then", this._options)
             this._draft.beginPath();
             this._draft.arc(
@@ -75,26 +75,25 @@ define(["require",
         _drawLabel: function (position, view) {
             this._draft.fillStyle = view._options.color;
             this._draft.font = "bold 12px sans-serif";
-            this._draft.fillText(view._options.name, this._draft.canvas.width / 2 + position[0] * constants.au / 1e6 / this._params.scale + 10, this._draft.canvas.height / 2 + position[1] * constants.au / 1e6 / this._params.scale + 10);
+            this._draft.fillText(view._params.name, this._draft.canvas.width / 2 + position[0] * constants.au / 1e6 / this._params.scale + 10, this._draft.canvas.height / 2 + position[1] * constants.au / 1e6 / this._params.scale + 10);
         },
         _extract: function (view) {
             return function (position) {
+                this._clear();
                 this._draft.save();
 
-                if (view instanceof AbstractObject) {
-                    this._drawObject(position, view);
+                if (view instanceof Body) {
+                    this._drawBody(position, view);
                 } else if (view instanceof Orbit) {
                     this._drawOrbit(position, view);
                 } else if (view instanceof Label) {
                     this._drawLabel(position, view);
-                } // TODO add rings
+                } else { // AbstractObject do nothing
+
+                } // TODO add belt
 
                 this._draft.restore();
-
-                var img = new Image();
-                img.src = this._draft.canvas.toDataURL();
-                this._clear();
-                return img;
+                return this._draft.canvas.toDataURL();
             }.bind(this);
         },
         _clear: function () {

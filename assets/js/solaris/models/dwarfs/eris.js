@@ -14,7 +14,9 @@ define(function (require) {
 
     _.extend(Ceres.prototype, {
         _optionsDefault: {
-            color: "#ffffff"
+            body: {
+                color: "#ffffff"
+            }
         },
         _params: {
             name: "Eris",

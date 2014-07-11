@@ -1,6 +1,7 @@
 define(["require",
     "./orbit",
-    "./label"
+    "./label",
+    "./body"
 ], function (require) {
     "use strict";
 
@@ -25,23 +26,11 @@ define(["require",
                 perihelion: 0
             }
         },
-        _options: {},
         _views: {},
-        _promise: null,
-        _cache: {},
         init: function (options) {
             //console.log("AbstractObject:init", options, shared)
             this._views = {};
             this._options = _.extend({}, this._optionsDefault, options);
-            if (this._options.orbit) {
-                //console.log("INIT:orbit", this._options.orbit)
-                this._views.orbit = new (require("./orbit"))(_.extend({days: this._params.days, index: this._params.index, step: 1}, this._options.orbit));
-            }
-            if (this._options.label) {
-                //console.log("INIT:label", this._options.label)
-                this._views.label = new (require("./label"))(_.extend({days: this._params.days, index: this._params.index, step: 1, name: this._params.name}, this._options.label));
-            }
-            this._cache = {}; // override prototype
             this._init(options);
         },
         _init: function (options) {
@@ -52,42 +41,23 @@ define(["require",
 
             _.forEach(options, function (views, dir) {
                 //console.log("views dir",views, dir)
-                _.forEach(views, function (options, view) {
-                    //console.log("options view",options, view)
-                    this._views[view] = new (require("../models/" + dir + "/" + view))(options);
-                }, this);
+                if (dir === "orbit" || dir === "label" || dir === "body" || dir === "belt") {
+                    this._views[dir] = new (require("./" + dir))(_.extend({}, this._optionsDefault[dir], options[dir]), this._params);
+                } else {
+                    _.forEach(views, function (options, view) {
+                        //console.log("options view",options, view)
+                        this._views[view] = new (require("../models/" + dir + "/" + view))(options);
+                    }, this);
+                }
             }, this);
         },
-        abort: function(){
-            if (this._promise) {
-                this._promise.abort();
-                this._promise = null;
-            }
+        abort: function () {
             _.forEach(this._views, function (view) {
                 view.abort();
             }, this);
         },
-        getPosition: function (data) {
-            this._promise = $.ajax({
-                url: "/ephemeris/getObject",
-                data: {
-                    date: new Date().toISOString().slice(0, 10),
-                    object: this._params.index,
-                    center: data.center
-                }
-            });
-            return this._promise;
-        },
-        getAverageOrbit: function () {
-            //console.log("Z", this)
-            return (this._params.orbit.perihelion + this._params.orbit.aphelion) / 2;
-        },
-        getImage: function(draw, data){
-            if (!this._cache[data.center]) {
-                this._cache[data.center] = this.getPosition(data)
-                    .then(draw);
-            }
-            return this._cache[data.center];
+        getImage: function () {
+            return new $.Deferred().reject().promise();
         }
     };
 

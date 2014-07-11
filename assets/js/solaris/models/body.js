@@ -1,27 +1,34 @@
-define(function (require) {
+define(["require",
+    "./orbit",
+    "./label"
+], function (require) {
     "use strict";
 
     var _ = require("underscore");
     var $ = require("jquery");
 
     // abstract class
-    var Label = function () {
+    var Body = function () {
         return this.init.apply(this, Array.prototype.slice.call(arguments));
     };
 
-    Label.prototype = {
-        _context: null,
-        _options: {},
+    Body.prototype = {
         _optionsDefault: {
-            color: "#ffffff"
         },
+        _options: {},
         _promise: null,
         _cache: {},
         init: function (options, params) {
-            //console.log("Label:init", options, this._options)
+            //console.log("Body:init", options);
             this._options = _.extend({}, this._optionsDefault, options);
             this._params = params;
             this._cache = {}; // override prototype
+        },
+        abort: function(){
+            if (this._promise) {
+                this._promise.abort();
+                this._promise = null;
+            }
         },
         getPosition: function (data) {
             this._promise = $.ajax({
@@ -34,12 +41,6 @@ define(function (require) {
             });
             return this._promise;
         },
-        abort: function(){
-            if (this._promise) {
-                this._promise.abort();
-                this._promise = null;
-            }
-        },
         getImage: function(draw, data){
             if (!this._cache[data.center]) {
                 this._cache[data.center] = this.getPosition(data)
@@ -49,5 +50,5 @@ define(function (require) {
         }
     };
 
-    return Label;
+    return Body;
 });

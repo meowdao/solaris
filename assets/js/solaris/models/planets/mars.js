@@ -12,7 +12,9 @@ define(function (require) {
 
     _.extend(Mars.prototype, {
         _optionsDefault: {
-            color: "#ff0000"
+            body: {
+                color: "#ff0000"
+            }
         },
         _params: {
             name: "Mars",

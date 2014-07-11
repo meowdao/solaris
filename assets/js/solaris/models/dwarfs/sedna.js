@@ -12,7 +12,9 @@ define(function (require) {
 
     _.extend(Sedna.prototype, {
         _optionsDefault: {
-            color: "#ff00ff"
+            body: {
+                color: "#ff00ff"
+            }
         },
         _params: {
             name: "Sedna",

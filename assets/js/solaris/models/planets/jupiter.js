@@ -12,7 +12,9 @@ define(function (require) {
 
     _.extend(Jupiter.prototype, {
         _optionsDefault: {
-            color: "#ffffff"
+            body: {
+                color: "#ffffff"
+            }
         },
         _params: {
             name: "Jupiter",

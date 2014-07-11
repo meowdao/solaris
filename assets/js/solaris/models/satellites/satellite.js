@@ -12,10 +12,7 @@ define(function (require) {
     AbstractSatellite.prototype = new AbstractObject();
 
     _.extend(AbstractSatellite.prototype, {
-        _init: function (options) {
-            // does nothing
-            void(options);
-        }
+
     });
 
     return AbstractSatellite;

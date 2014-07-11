@@ -34,7 +34,9 @@ define(["require",
 
     _.extend(Sun.prototype, {
         _optionsDefault: {
-            color: "#ffff00"
+            body: {
+                color: "#ffff00"
+            }
         },
         _params: {
             name: "Sun",
