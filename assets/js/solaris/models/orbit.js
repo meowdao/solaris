@@ -16,9 +16,11 @@ define(function (require) {
             color: "#ffffff"
         },
         _promise: null,
+        _cache: {},
         init: function (options) {
             //console.log("Orbit:init", options, this._options)
             this._options = _.extend({}, this._optionsDefault, options);
+            this._cache = {}; // override prototype
         },
         getPositions: function (data) {
             var start = new Date(),
@@ -42,6 +44,13 @@ define(function (require) {
                 this._promise.abort();
                 this._promise = null;
             }
+        },
+        getImage: function(draw, data){
+            if (!this._cache[data.center]) {
+                this._cache[data.center] = this.getPositions(data)
+                    .then(draw);
+            }
+            return this._cache[data.center];
         }
     };
 

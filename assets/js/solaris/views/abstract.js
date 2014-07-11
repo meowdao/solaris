@@ -15,15 +15,15 @@ define(function (require) {
             scale: 1
         },
         _views: {},
-        _size: {},
+        _draft: document.createElement("canvas").getContext("2d"),
         init: function (context, options, params) {
             this._context = context;
-            this._size = {
-                width: this._context.canvas.width,
-                height: this._context.canvas.height
-            };
             _.extend(this._options, options);
             _.extend(this._params, params);
+
+            this._draft.canvas.width = this._context.canvas.width;
+            this._draft.canvas.height = this._context.canvas.height;
+
             //console.log(this);
             this._init(options);
         },

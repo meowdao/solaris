@@ -21,7 +21,7 @@ define(function (require) {
         draw: function () {
             this._context.save();
             this._context.fillStyle = this._options.color;
-            this._context.fillRect(0, 0, this._size.width, this._size.height);
+            this._context.fillRect(0, 0, this._context.canvas.width, this._context.canvas.height);
             this._context.restore();
         }
     });

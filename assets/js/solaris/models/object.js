@@ -28,6 +28,7 @@ define(["require",
         _options: {},
         _views: {},
         _promise: null,
+        _cache: {},
         init: function (options) {
             //console.log("AbstractObject:init", options, shared)
             this._views = {};
@@ -40,6 +41,7 @@ define(["require",
                 //console.log("INIT:label", this._options.label)
                 this._views.label = new (require("./label"))(_.extend({days: this._params.days, index: this._params.index, step: 1, name: this._params.name}, this._options.label));
             }
+            this._cache = {}; // override prototype
             this._init(options);
         },
         _init: function (options) {
@@ -79,6 +81,13 @@ define(["require",
         getAverageOrbit: function () {
             //console.log("Z", this)
             return (this._params.orbit.perihelion + this._params.orbit.aphelion) / 2;
+        },
+        getImage: function(draw, data){
+            if (!this._cache[data.center]) {
+                this._cache[data.center] = this.getPosition(data)
+                    .then(draw);
+            }
+            return this._cache[data.center];
         }
     };
 

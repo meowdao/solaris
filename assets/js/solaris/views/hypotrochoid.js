@@ -41,8 +41,8 @@ define(["require",
                 this._context.save();
                 this._context.beginPath();
                 for (var i = 0, j = from.length; i < j; i++) {
-                    this._context.moveTo(this._size.width / 2 + from[i].xv[0] * au / 1e6, this._size.height / 2 + from[i].xv[1] * au / 1e6);
-                    this._context.lineTo(this._size.width / 2 + to[i].xv[0] * au / 1e6, this._size.height / 2 + to[i].xv[1] * au / 1e6);
+                    this._context.moveTo(this._context.canvas.width / 2 + from[i].xv[0] * au / 1e6, this._context.canvas.height / 2 + from[i].xv[1] * au / 1e6);
+                    this._context.lineTo(this._context.canvas.width / 2 + to[i].xv[0] * au / 1e6, this._context.canvas.height / 2 + to[i].xv[1] * au / 1e6);
                 }
                 this._context.strokeStyle = this._options.strokeStyle;
                 this._context.closePath();
