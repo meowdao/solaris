@@ -24,8 +24,8 @@
         "Backbone": true,
 
         "define": true,
-        "require": true
+        "require": true,
 
-
+        "WeakMap": true
 	}
 }
