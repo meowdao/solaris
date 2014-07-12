@@ -1,6 +1,8 @@
 Solaris
 =======
 
+[![Build Status](https://travis-ci.org/CTAPbIuMABP/solaris.svg?branch=master)](https://travis-ci.org/CTAPbIuMABP/solaris)
+
 Simple 2d solar system :)
 
 Dependencies
