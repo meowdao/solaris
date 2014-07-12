@@ -6,7 +6,7 @@ define(["require", "solaris/core"], function (require) {
 
         var solaris = new Solaris(document.getElementById("solaris"), {
             center: 11,
-            scale: 35
+            scale: 1
         });
 
         solaris.loadView("void");

@@ -11,17 +11,25 @@ define(function (require) {
             sun: {
                 body: true,
                 planets: {
-                    jupiter: {
+                    mercury: {
                         orbit: {
                             color: "#ff00ff"
                         },
                         label: {
-                            color: "#ffff00"
+                            color: "#ff00ff"
                         },
+                        body: {
+                            color: "#ff00ff"
+                        }
+                    },
+                    venus: {
+                        orbit: true,
+                        label: true,
                         body: true
                     },
-                    saturn: {
+                    earth: {
                         orbit: true,
+                        label: true,
                         body: true
                     }
                 },

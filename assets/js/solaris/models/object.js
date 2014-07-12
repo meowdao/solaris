@@ -34,11 +34,6 @@ define(["require",
             this._init(options);
         },
         _init: function (options) {
-            //console.log("AbstractObject", options);
-            /*_.forEach(options.sub, function (options, view) {
-                this._views[view] = new (require("../models/planets/" + view))(this._context, options, shared);
-            }, this);*/
-
             _.forEach(options, function (views, dir) {
                 //console.log("views dir",views, dir)
                 if (dir === "orbit" || dir === "label" || dir === "body" || dir === "belt") {

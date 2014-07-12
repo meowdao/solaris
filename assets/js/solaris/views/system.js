@@ -42,7 +42,7 @@ define(["require",
             // TODO return promise
             _.forEach(obj._views, function (view) {
                 //console.log("SolarSystemView:drawing", view);
-                view.getImage(this._extract(view), {center: this._params.center})
+                view.getImage(this/*this._extract(view), {center: this._params.center}*/)
                     .then(this._context.drawImageData.bind(this._context));
                 this._draw(view);
             }, this);

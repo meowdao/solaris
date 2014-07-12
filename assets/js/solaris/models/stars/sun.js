@@ -1,7 +1,5 @@
 define(["require",
     "./star",
-    "../planets/planet",
-    //"../belts/belt",
     // planets
     "../planets/mercury",
     "../planets/venus",
