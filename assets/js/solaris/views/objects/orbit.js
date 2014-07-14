@@ -6,10 +6,16 @@ define([
 
     var _ = require("underscore");
     var $ = require("jquery");
+    var cache = new WeakMap();
 
     // abstract class
-    var Orbit = function () {
-        return this.init.apply(this, Array.prototype.slice.call(arguments));
+    var Orbit = function (obj) {
+        if (obj) {
+            if (!cache.has(obj)) {
+                cache.set(obj, new Orbit());
+            }
+            return cache.get(obj);
+        }
     };
 
     Orbit.prototype = new Proto();

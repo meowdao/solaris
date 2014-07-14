@@ -5,10 +5,16 @@ define([
     "use strict";
 
     var _ = require("underscore");
+    var cache = new WeakMap();
 
     // abstract class
-    var Body = function () {
-        return this.init.apply(this, Array.prototype.slice.call(arguments));
+    var Body = function (obj) {
+        if (obj) {
+            if (!cache.has(obj)) {
+                cache.set(obj, new Body());
+            }
+            return cache.get(obj);
+        }
     };
 
     Body.prototype = new Proto();
@@ -18,4 +24,5 @@ define([
     });
 
     return Body;
+
 });

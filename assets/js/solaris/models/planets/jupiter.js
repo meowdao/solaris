@@ -7,7 +7,7 @@ define([
     var _ = require("underscore");
 
     var Jupiter = function () {
-        return this.init.apply(this, Array.prototype.slice.call(arguments));
+
     };
 
     Jupiter.prototype = new AbstractPlanet();
@@ -31,5 +31,5 @@ define([
         }
     });
 
-    return Jupiter;
+    return new Jupiter();
 });

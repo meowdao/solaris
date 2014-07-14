@@ -19,7 +19,8 @@
         "jquery": "2.1.0",
         "jquery-ui": "1.11.0",
         "requirejs": "2.1.8",
-        "underscore": "1.6.0"
+        "underscore": "1.6.0",
+        "harmony-collections": "git@github.com:CTAPbIuMABP/harmony-collections.git#0.0.0"
     }
 }
 

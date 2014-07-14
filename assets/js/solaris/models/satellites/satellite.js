@@ -1,7 +1,9 @@
-define(function (require) {
+define([
+    "require",
+    "../object"
+],function (require, AbstractObject) {
     "use strict";
 
-    var AbstractObject = require("../object");
     var _ = require("underscore");
 
     // abstract class

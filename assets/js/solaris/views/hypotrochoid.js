@@ -16,19 +16,11 @@ define([
 
     _.extend(HypotrochoidView.prototype, {
         _init: function (options) {
-            //console.log("HypotrochoidView", options);
             _.forEach(options.sub, function (options, view) {
                 this._views[view] = new (require("../models/stars/" + view))(this._context, options);
             }, this);
         },
         draw: function () {
-            //console.log("HypotrochoidView:draw")
-            /*var orbits = _.map(this._views, function (star) {
-                return _.map(star._views, function (planet) {
-                    return planet.getAverageOrbit();
-                });
-            });*/
-            //console.log("Orbits", orbits)
 
             var orbits = _.map(this._views.sun._views, function (planet) {
                 return planet._views.orbit.getPositions(new Date());
@@ -38,7 +30,7 @@ define([
                 var from = arguments[0][0];
                 var to = arguments[1][0];
                 var au = 149597870.691;
-                //console.log("SolarSystemView:drawing", from, to);
+
                 this._context.save();
                 this._context.beginPath();
                 for (var i = 0, j = from.length; i < j; i++) {

@@ -7,7 +7,7 @@ define([
     var _ = require("underscore");
 
     var Pluto = function () {
-        return this.init.apply(this, Array.prototype.slice.call(arguments));
+
     };
 
     Pluto.prototype = new AbstractPlanet();
@@ -31,5 +31,5 @@ define([
         }
     });
 
-    return Pluto;
+    return new Pluto();
 });

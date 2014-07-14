@@ -57,7 +57,7 @@ require([
 
     new Routes();
 
-    // // https://blog.isotoma.com/2014/01/backbone-history-and-ie9/
+    // https://blog.isotoma.com/2014/01/backbone-history-and-ie9/
     backbone.history.start({pushState: true});
     console.log("APP");
 });

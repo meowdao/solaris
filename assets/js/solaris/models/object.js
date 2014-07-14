@@ -1,8 +1,8 @@
 define([
     "require",
-    "./orbit",
-    "./label",
-    "./body"
+    "../views/objects/orbit",
+    "../views/objects/label",
+    "../views/objects/body"
 ], function (require) {
     "use strict";
 
@@ -28,21 +28,20 @@ define([
             }
         },
         _views: {},
-        init: function (options) {
-            //console.log("AbstractObject:init", options, shared)
+        setOptions: function (options) {
             this._views = {};
             this._options = _.extend({}, this._optionsDefault, options);
             this._init(options);
         },
         _init: function (options) {
             _.forEach(options, function (views, dir) {
-                //console.log("views dir",views, dir)
                 if (dir === "orbit" || dir === "label" || dir === "body" || dir === "belt") {
-                    this._views[dir] = new (require("./" + dir))(_.extend({}, this._optionsDefault[dir], options[dir]), this._params);
+                    this._views[dir] = require("../views/objects/" + dir)(this);
+                    this._views[dir].setOptions(_.extend({}, this._optionsDefault[dir], options[dir]), this._params);
                 } else {
                     _.forEach(views, function (options, view) {
-                        //console.log("options view",options, view)
-                        this._views[view] = new (require("../models/" + dir + "/" + view))(options);
+                        this._views[view] = require("../models/" + dir + "/" + view);
+                        this._views[view].setOptions(options);
                     }, this);
                 }
             }, this);

@@ -7,7 +7,7 @@ define([
     var _ = require("underscore");
 
     var Vesta = function () {
-        return this.init.apply(this, Array.prototype.slice.call(arguments));
+
     };
 
     Vesta.prototype = new AbstractPlanet();
@@ -31,5 +31,5 @@ define([
         }
     });
 
-    return Vesta;
+    return new Vesta();
 });

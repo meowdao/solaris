@@ -7,7 +7,7 @@ define([
     var _ = require("underscore");
 
     var Saturn = function () {
-        return this.init.apply(this, Array.prototype.slice.call(arguments));
+
     };
 
     Saturn.prototype = new AbstractPlanet();
@@ -31,5 +31,5 @@ define([
         }
     });
 
-    return Saturn;
+    return new Saturn();
 });

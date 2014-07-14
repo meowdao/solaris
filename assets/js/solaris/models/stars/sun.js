@@ -25,7 +25,7 @@ define([
     var _ = require("underscore");
 
     var Sun = function () {
-        return this.init.apply(this, Array.prototype.slice.call(arguments));
+
     };
 
     Sun.prototype = new AbstractStar();
@@ -46,5 +46,5 @@ define([
         }
     });
 
-    return Sun;
+    return new Sun();
 });

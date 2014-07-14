@@ -7,7 +7,7 @@ define([
     var _ = require("underscore");
 
     var Pallas = function () {
-        return this.init.apply(this, Array.prototype.slice.call(arguments));
+
     };
 
     Pallas.prototype = new AbstractPlanet();
@@ -31,5 +31,5 @@ define([
         }
     });
 
-    return Pallas;
+    return new Pallas();
 });

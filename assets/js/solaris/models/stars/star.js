@@ -1,14 +1,16 @@
-define(function (require) {
+define([
+    "require",
+    "../object"
+],function (require, AbstractObject) {
     "use strict";
 
-    var SpaceObject = require("../object");
     var _ = require("underscore");
 
     var AbstractStar = function () {
 
     };
 
-    AbstractStar.prototype = new SpaceObject();
+    AbstractStar.prototype = new AbstractObject();
 
     _.extend(AbstractStar.prototype, {
 

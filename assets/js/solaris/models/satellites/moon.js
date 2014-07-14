@@ -7,7 +7,7 @@ define([
     var _ = require("underscore");
 
     var Moon = function () {
-        return this.init.apply(this, Array.prototype.slice.call(arguments));
+
     };
 
     Moon.prototype = new AbstractPlanet();
@@ -31,5 +31,5 @@ define([
         }
     });
 
-    return Moon;
+    return new Moon();
 });

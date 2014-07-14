@@ -7,7 +7,7 @@ define([
     var _ = require("underscore");
 
     var GridView = function () {
-        return this.init.apply(this, Array.prototype.slice.call(arguments));
+
     };
     GridView.prototype = new AbstractView();
 
@@ -67,5 +67,5 @@ define([
         }
     });
 
-    return GridView;
+    return new GridView();
 });

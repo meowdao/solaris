@@ -8,7 +8,7 @@ define([
     var _ = require("underscore");
 
     var Ceres = function () {
-        return this.init.apply(this, Array.prototype.slice.call(arguments));
+
     };
 
     Ceres.prototype = new AbstractPlanet();
@@ -32,5 +32,5 @@ define([
         }
     });
 
-    return Ceres;
+    return new Ceres();
 });

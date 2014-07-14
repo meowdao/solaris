@@ -7,7 +7,7 @@ define([
     var _ = require("underscore");
 
     var Makemake = function () {
-        return this.init.apply(this, Array.prototype.slice.call(arguments));
+
     };
 
     Makemake.prototype = new AbstractPlanet();
@@ -31,5 +31,5 @@ define([
         }
     });
 
-    return Makemake;
+    return new Makemake();
 });

@@ -7,7 +7,7 @@ define([
     var _ = require("underscore");
 
     var Neptune = function () {
-        return this.init.apply(this, Array.prototype.slice.call(arguments));
+
     };
 
     Neptune.prototype = new AbstractPlanet();
@@ -31,5 +31,5 @@ define([
         }
     });
 
-    return Neptune;
+    return new Neptune();
 });

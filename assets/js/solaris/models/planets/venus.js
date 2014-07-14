@@ -7,7 +7,7 @@ define([
     var _ = require("underscore");
 
     var Venus = function () {
-        return this.init.apply(this, Array.prototype.slice.call(arguments));
+
     };
 
     Venus.prototype = new AbstractPlanet();
@@ -31,5 +31,5 @@ define([
         }
     });
 
-    return Venus;
+    return new Venus();
 });

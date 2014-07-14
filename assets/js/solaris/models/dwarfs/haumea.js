@@ -7,7 +7,7 @@ define([
     var _ = require("underscore");
 
     var Haumea = function () {
-        return this.init.apply(this, Array.prototype.slice.call(arguments));
+
     };
 
     Haumea.prototype = new AbstractPlanet();
@@ -31,5 +31,5 @@ define([
         }
     });
 
-    return Haumea;
+    return new Haumea();
 });

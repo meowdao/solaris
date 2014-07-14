@@ -7,7 +7,7 @@ define([
     var _ = require("underscore");
 
     var Mercury = function () {
-        return this.init.apply(this, Array.prototype.slice.call(arguments));
+
     };
 
     Mercury.prototype = new AbstractPlanet();
@@ -31,5 +31,5 @@ define([
         }
     });
 
-    return Mercury;
+    return new Mercury();
 });

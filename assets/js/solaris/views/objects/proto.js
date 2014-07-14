@@ -16,12 +16,9 @@ define(function (require) {
         _options: {},
         _promises: {},
         _cache: new WeakMap(),
-        init: function (options, params) {
-            //console.log("Proto:init", options);
+        setOptions: function (options, params) {
             this._options = _.extend({}, this._optionsDefault, options);
             this._params = params;
-
-            //this._cache = {}; // override prototype
         },
         abort: function () {
             _.forEach(this._promises, function (promise, data, list) {
@@ -48,13 +45,10 @@ define(function (require) {
             return this._promises[json];
         },
         getImage: function (view) {
-            //console.log("IMG: ", this._cache.has(view))
             if (!this._cache.has(view)) {
-                //console.log("IMG: NEW VIEW")
                 this._cache.set(view, new WeakMap());
             }
             if (!this._cache.get(view).has(this)) {
-                //console.log("IMG: NEW THIS")
                 this._cache.get(view).set(this, this.getPosition(view._params)
                     .then(view._extract(this)));
             }

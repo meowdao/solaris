@@ -7,7 +7,7 @@ define([
     var _ = require("underscore");
 
     var VoidView = function () {
-        return this.init.apply(this, Array.prototype.slice.call(arguments));
+
     };
 
     VoidView.prototype = new AbstractView();
@@ -28,5 +28,5 @@ define([
         }
     });
 
-    return VoidView;
+    return new VoidView();
 });

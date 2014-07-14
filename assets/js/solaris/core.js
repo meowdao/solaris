@@ -18,7 +18,6 @@ define(["require",
         },
         _views: {},
         init: function (element, options) {
-            //console.log("Solaris", options);
             this._context = element.getContext("2d");
             // TODO fix me
             this._context.drawImageData = function (data) {
@@ -29,8 +28,8 @@ define(["require",
             _.extend(this._options, options);
         },
         loadView: function (view, options) {
-            //console.log("Solaris",view,options);
-            this._views[view] = new (require("./views/" + view))(this._context, options, this._options);
+            this._views[view] = require("./views/" + view);
+            this._views[view].setOptions(this._context, options, this._options);
             this._views[view].draw();
             return this._views[view];
         },

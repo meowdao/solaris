@@ -7,7 +7,7 @@ define([
     var _ = require("underscore");
 
     var Sedna = function () {
-        return this.init.apply(this, Array.prototype.slice.call(arguments));
+
     };
 
     Sedna.prototype = new AbstractPlanet();
@@ -31,5 +31,5 @@ define([
         }
     });
 
-    return Sedna;
+    return new Sedna();
 });
