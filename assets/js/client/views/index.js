@@ -38,10 +38,6 @@ define(function (require) {
         onChange: function(e){
             var group = this.$(e.target).closest("[data-group]").data("group"); // TODO fix me
 
-            if (group === "stars"){
-                return false;
-            }
-
             if (e.target.checked) {
                 config.stars.sun[group][e.target.name] = {
                     orbit: true,
@@ -53,14 +49,6 @@ define(function (require) {
             }
 
             solaris(config);
-        },
-
-        remove: function () {
-            console.log("remove");
-        },
-
-        cleanup: function () {
-            this.$el.removeClass("loading");
         }
 
     });
