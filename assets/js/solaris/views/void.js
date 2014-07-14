@@ -1,7 +1,9 @@
-define(function (require) {
+define([
+    "require",
+    "./abstract"
+], function (require, AbstractView) {
     "use strict";
 
-    var AbstractView = require("./abstract");
     var _ = require("underscore");
 
     var VoidView = function () {

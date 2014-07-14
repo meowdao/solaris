@@ -1,9 +1,10 @@
-define(["require",
+define([
+    "require",
+    "./abstract",
     "../models/stars/sun"
-], function (require) {
+], function (require, AbstractView) {
     "use strict";
 
-    var AbstractView = require("./abstract");
     var _ = require("underscore");
     var $ = require("jquery");
 
@@ -15,7 +16,7 @@ define(["require",
 
     _.extend(HypotrochoidView.prototype, {
         _init: function (options) {
-            console.log("HypotrochoidView", options);
+            //console.log("HypotrochoidView", options);
             _.forEach(options.sub, function (options, view) {
                 this._views[view] = new (require("../models/stars/" + view))(this._context, options);
             }, this);
@@ -37,7 +38,7 @@ define(["require",
                 var from = arguments[0][0];
                 var to = arguments[1][0];
                 var au = 149597870.691;
-                console.log("SolarSystemView:drawing", from, to);
+                //console.log("SolarSystemView:drawing", from, to);
                 this._context.save();
                 this._context.beginPath();
                 for (var i = 0, j = from.length; i < j; i++) {

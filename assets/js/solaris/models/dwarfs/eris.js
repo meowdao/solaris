@@ -1,9 +1,10 @@
-define(function (require) {
+define([
+    "require",
+    "./dwarf"
+    // has satellite Dysnomia
+],function (require, AbstractPlanet) {
     "use strict";
 
-    // has satellite Dysnomia
-
-    var AbstractPlanet = require("./dwarf");
     var _ = require("underscore");
 
     var Ceres = function () {

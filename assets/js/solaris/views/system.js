@@ -1,20 +1,15 @@
-define(["require",
-    "../models/object",
+define([
+    "require",
+    "./abstract",
+    "../models/body",
     "../models/orbit",
     "../models/label",
-    "../models/stars/sun",
-    "../constants"
-], function (require) {
+    "../constants",
+    "../models/stars/sun"
+], function (require, AbstractView, Body, Orbit, Label, constants) {
     "use strict";
 
-    var AbstractView = require("./abstract");
-
-    var Body = require("../models/body");
-    var Orbit = require("../models/orbit");
-    var Label = require("../models/label");
-
     var _ = require("underscore");
-    var constants = require("../constants");
 
     // http://en.wikipedia.org/wiki/Solar_System
     var SolarSystemView = function () {

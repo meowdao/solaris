@@ -1,9 +1,10 @@
-define(["require",
+define([
+    "require",
+    "./planet",
     "../satellites/moon"
-], function (require) {
+], function (require, AbstractPlanet) {
     "use strict";
 
-    var AbstractPlanet = require("./planet");
     var _ = require("underscore");
 
     var Earth = function () {

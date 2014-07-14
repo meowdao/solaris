@@ -1,8 +1,10 @@
-define(["require", "solaris/core"], function (require) {
+define([
+    "require",
+    "solaris/core"
+], function (require, Solaris) {
     "use strict";
 
     return function (data) {
-        var Solaris = require("solaris/core");
 
         var solaris = new Solaris(document.getElementById("solaris"), {
             center: 11,

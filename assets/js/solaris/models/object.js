@@ -1,4 +1,5 @@
-define(["require",
+define([
+    "require",
     "./orbit",
     "./label",
     "./body"

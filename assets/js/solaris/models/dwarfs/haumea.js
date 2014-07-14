@@ -1,7 +1,9 @@
-define(function (require) {
+define([
+    "require",
+    "./dwarf"
+],function (require, AbstractPlanet) {
     "use strict";
 
-    var AbstractPlanet = require("./dwarf");
     var _ = require("underscore");
 
     var Haumea = function () {

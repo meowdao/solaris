@@ -1,9 +1,11 @@
-define(function (require) {
+define([
+    "require",
+    "./proto"
+], function (require, Proto) {
     "use strict";
 
     var _ = require("underscore");
     var $ = require("jquery");
-    var Proto = require("./proto");
 
     // abstract class
     var Orbit = function () {

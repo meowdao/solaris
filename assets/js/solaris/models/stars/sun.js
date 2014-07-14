@@ -1,4 +1,5 @@
-define(["require",
+define([
+    "require",
     "./star",
     // planets
     "../planets/mercury",
@@ -18,10 +19,9 @@ define(["require",
     "../dwarfs/haumea",
     "../dwarfs/eris",
     "../dwarfs/makemake"
-], function (require) {
+], function (require, AbstractStar) {
     "use strict";
 
-    var AbstractStar = require("./star");
     var _ = require("underscore");
 
     var Sun = function () {
