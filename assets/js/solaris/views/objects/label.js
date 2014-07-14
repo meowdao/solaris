@@ -2,6 +2,7 @@ define([
     "require",
     "./proto"
 ], function (require, Proto) {
+    "use strict";
 
     var _ = require("underscore");
     var cache = new WeakMap();
