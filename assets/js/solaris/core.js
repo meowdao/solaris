@@ -26,7 +26,7 @@ define(["require",
             };
         },
         draw: function () {
-            _.invoke(this._views, "draw", this._context)
+            _.invoke(this._views, "draw", this._context);
         },
         setOptions: function (options) {
             _.invoke(this._views, "setOptions", options);
