@@ -1,7 +1,7 @@
 "use strict";
 
 var Q = require("q"),
-    _ = require("lodash");
+    _ = require("underscore");
 
 exports.simpleJSONWrapper = function (method) {
     return function (request, response) {

@@ -1,6 +1,6 @@
 "use strict";
 
-var _ = require("lodash");
+var _ = require("underscore");
 
 exports.requiresParams = function (required) {
     return function (request, response, next) {
