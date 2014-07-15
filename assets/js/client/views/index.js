@@ -4,8 +4,9 @@ define(function (require) {
     var backbone = require("backbone");
     var handlebars = require("handlebars");
     var solaris = require("solaris/core");
+    solaris.loadViews(["void", "grid", "system"]);
 
-    var config = {
+    var options = {
         stars: {
             sun: {
                 body: true,
@@ -15,7 +16,7 @@ define(function (require) {
         }
     };
 
-    var options = {
+    var params = {
         center: 11,
         scale: 1
     };
@@ -38,19 +39,20 @@ define(function (require) {
         initialize: function () {
             solaris.setContext(document.getElementById("solaris").getContext("2d"));
             solaris.setOptions(options);
-            this.setUp();
+            solaris.setParams(params);
+            solaris.draw();
         },
 
         render: function () {
             this.$el.find("form").append(this.template(data));
-            this.disable(options);
+            this.disable(params);
         },
 
         disable: function (options) {
             this.$el.find("form").find("[type=checkbox]").each(function (i, e) {
                 if ((options.scale === 1 && (data.planets.indexOf(e.name) > 3 || data.dwarfs.indexOf(e.name) > 2)) ||
                     (options.scale === 10 && (data.dwarfs.indexOf(e.name) > 2))) {
-                    this.$(e).prop("disabled", true).prop("checked", false).trigger("change");
+                    this.$(e).prop("disabled", true).prop("checked", false);
                 } else {
                     this.$(e).prop("disabled", false);
                 }
@@ -61,29 +63,24 @@ define(function (require) {
             var group = this.$(e.target).closest("[data-group]").data("group");
 
             if (e.target.checked) {
-                config.stars.sun[group][e.target.name] = {
+                options.stars.sun[group][e.target.name] = {
                     orbit: true,
                     label: true,
                     body: true
                 };
             } else {
-                delete config.stars.sun[group][e.target.name];
+                delete options.stars.sun[group][e.target.name];
             }
 
-            this.setUp();
+            solaris.setOptions(options);
+            solaris.draw();
         },
 
         onSelect: function (e) {
-            options.scale = ~~e.target.value;
-            solaris.setOptions(options);
-            this.setUp();
-            this.disable(options);
-        },
-
-        setUp: function () {
-            solaris.loadView("void");
-            solaris.loadView("grid");
-            solaris.loadView("system", config);
+            params.scale = ~~e.target.value;
+            this.disable(params);
+            solaris.setParams(params);
+            solaris.draw();
         }
 
     });

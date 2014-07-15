@@ -22,9 +22,6 @@ define([
         _views: {},
         _draft: document.createElement("canvas").getContext("2d"),
         _setOptions: function (options) {
-            this._draft.canvas.width = this._context.canvas.width;
-            this._draft.canvas.height = this._context.canvas.height;
-
             _.forEach(options, function (views, dir) {
                 _.forEach(views, function (options, view) {
                     this._views[view] = require("../models/" + dir + "/" + view);
@@ -32,20 +29,17 @@ define([
                 }, this);
             }, this);
         },
-        draw: function () {
-            this._draw(this);
+        draw: function (context) {
+            this._draft.canvas.width = context.canvas.width;
+            this._draft.canvas.height = context.canvas.height;
+            this._draw(context, this);
         },
-        clearCache: function(){
-            new Body()._cache.delete(this);
-            new Orbit()._cache.delete(this);
-            new Label()._cache.delete(this);
-        },
-        _draw: function (obj) {
+        _draw: function (context, obj) {
             // TODO return promise
             _.forEach(obj._views, function (view) {
                 view.getImage(this)
-                    .then(this._context.drawImageData.bind(this._context));
-                this._draw(view);
+                    .then(context.drawImageData.bind(context));
+                this._draw(context, view);
             }, this);
         },
         _drawBody: function (position, view) {

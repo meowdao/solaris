@@ -16,11 +16,11 @@ define([
         _options: {
             color: "#000000"
         },
-        draw: function () {
-            this._context.save();
-            this._context.fillStyle = this._options.color;
-            this._context.fillRect(0, 0, this._context.canvas.width, this._context.canvas.height);
-            this._context.restore();
+        draw: function (context) {
+            context.save();
+            context.fillStyle = this._options.color;
+            context.fillRect(0, 0, context.canvas.width, context.canvas.height);
+            context.restore();
         }
     });
 

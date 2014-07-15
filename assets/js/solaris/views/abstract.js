@@ -9,25 +9,24 @@ define(function (require) {
 
     AbstractView.prototype = {
         _context: null,
-        _params: {},
-        _options: {
+        _params: {
             center: 11,
             scale: 1
         },
+        _options: {},
         _views: {},
-        setOptions: function (context, options, params) {
-            this._context = context;
-            _.extend(this._options, options);
-            _.extend(this._params, params);
+        setOptions: function (options) {
+            //console.log("AbstractView:setOptions",options, params)
+            this._options = _.extend({}, this._options, options);
             this._setOptions(options);
+        },
+        setParams: function(params){
+            this._params = _.extend({}, this._params, params);
         },
         _setOptions: function () {
             // abstract
         },
         draw: function(){
-            // abstract
-        },
-        clearCache: function(){
             // abstract
         },
         abort: function(){

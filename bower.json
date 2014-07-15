@@ -16,7 +16,7 @@
         "globalize": "0.1.1",
         "handlebars": "1.3.0",
         "normalize.css": "3.0.1",
-        "jquery": "2.1.0",
+        "jquery": "2.1.1",
         "jquery-ui": "1.11.0",
         "requirejs": "2.1.8",
         "underscore": "1.6.0",

@@ -46,14 +46,16 @@ define(function (require) {
             return this._promises[json];
         },
         getImage: function (view) {
-            if (!this._cache.has(view)) {
-                this._cache.set(view, new WeakMap());
+            if (!this._cache.has(view._params)) {
+                // console.log("NEW VIEW")
+                this._cache.set(view._params, new WeakMap());
             }
-            if (!this._cache.get(view).has(this)) {
-                this._cache.get(view).set(this, this.getPosition(view._params)
+            if (!this._cache.get(view._params).has(this)) {
+                // console.log("NEW THIS")
+                this._cache.get(view._params).set(this, this.getPosition(view._params)
                     .then(view._extract(this)));
             }
-            return this._cache.get(view).get(this);
+            return this._cache.get(view._params).get(this);
         }
     };
 
