@@ -50,7 +50,7 @@ define(function (require) {
             this.$el.find("form").find("[type=checkbox]").each(function (i, e) {
                 if ((options.scale === 1 && (data.planets.indexOf(e.name) > 3 || data.dwarfs.indexOf(e.name) > 2)) ||
                     (options.scale === 10 && (data.dwarfs.indexOf(e.name) > 2))) {
-                    this.$(e).prop("disabled", true);
+                    this.$(e).prop("disabled", true).prop("checked", false).trigger("change");
                 } else {
                     this.$(e).prop("disabled", false);
                 }
