@@ -16,10 +16,6 @@ define([
         _options: {
             color: "#000000"
         },
-        _init: function(options){
-            // does nothing
-            void(options);
-        },
         draw: function () {
             this._context.save();
             this._context.fillStyle = this._options.color;

@@ -15,28 +15,20 @@ define(function (require) {
             scale: 1
         },
         _views: {},
-        _draft: document.createElement("canvas").getContext("2d"),
         setOptions: function (context, options, params) {
             this._context = context;
             _.extend(this._options, options);
             _.extend(this._params, params);
-
-            this._draft.canvas.width = this._context.canvas.width;
-            this._draft.canvas.height = this._context.canvas.height;
-
-            this._init(options);
+            this._setOptions(options);
         },
-        _init: function(){
+        _setOptions: function () {
             // abstract
-            throw "Abstract method not implemented";
         },
         draw: function(){
             // abstract
-            throw "Abstract method not implemented";
         },
-        loadViews: function(){
+        clearCache: function(){
             // abstract
-            throw "Abstract method not implemented";
         },
         abort: function(){
             _.forEach(this._views, function (view) {

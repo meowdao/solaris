@@ -20,7 +20,11 @@ define([
 
     _.extend(SolarSystemView.prototype, {
         _views: {},
-        _init: function (options) {
+        _draft: document.createElement("canvas").getContext("2d"),
+        _setOptions: function (options) {
+            this._draft.canvas.width = this._context.canvas.width;
+            this._draft.canvas.height = this._context.canvas.height;
+
             _.forEach(options, function (views, dir) {
                 _.forEach(views, function (options, view) {
                     this._views[view] = require("../models/" + dir + "/" + view);
@@ -30,6 +34,11 @@ define([
         },
         draw: function () {
             this._draw(this);
+        },
+        clearCache: function(){
+            new Body()._cache.delete(this);
+            new Orbit()._cache.delete(this);
+            new Label()._cache.delete(this);
         },
         _draw: function (obj) {
             // TODO return promise

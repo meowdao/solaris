@@ -9,7 +9,7 @@ define(["require",
     var _ = require("underscore");
 
     var Solaris = function () {
-        return this.init.apply(this, Array.prototype.slice.call(arguments));
+
     };
 
     Solaris.prototype = {
@@ -17,8 +17,10 @@ define(["require",
         _options: {
         },
         _views: {},
-        init: function (element, options) {
-            this._context = element.getContext("2d");
+        setContext: function (context) {
+            this._context = context;
+        },
+        setOptions: function (options) {
             // TODO fix me
             this._context.drawImageData = function (data) {
                 var img = new Image();
@@ -26,8 +28,10 @@ define(["require",
                 this.drawImage(img, 0, 0);
             };
             _.extend(this._options, options);
+            _.invoke(this._views, "clearCache");
         },
         loadView: function (view, options) {
+            this._views[view] = {};
             this._views[view] = require("./views/" + view);
             this._views[view].setOptions(this._context, options, this._options);
             this._views[view].draw();
@@ -41,5 +45,5 @@ define(["require",
         }
     };
 
-    return Solaris;
+    return new Solaris();
 });

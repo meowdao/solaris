@@ -15,6 +15,7 @@ define([
     };
 
     AbstractObject.prototype = {
+        _options: {},
         _params: {
             index: 0,
             radius: 0,
@@ -31,9 +32,9 @@ define([
         setOptions: function (options) {
             this._views = {};
             this._options = _.extend({}, this._optionsDefault, options);
-            this._init(options);
+            this._setOptions(options);
         },
-        _init: function (options) {
+        _setOptions: function (options) {
             _.forEach(options, function (views, dir) {
                 if (dir === "orbit" || dir === "label" || dir === "body" || dir === "belt") {
                     this._views[dir] = require("../views/objects/" + dir)(this);

@@ -15,6 +15,7 @@ define(function (require) {
         },
         _options: {},
         _promises: {},
+        _params: {},
         _cache: new WeakMap(),
         setOptions: function (options, params) {
             this._options = _.extend({}, this._optionsDefault, options);

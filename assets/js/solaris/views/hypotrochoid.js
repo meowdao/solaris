@@ -15,7 +15,7 @@ define([
     HypotrochoidView.prototype = new AbstractView();
 
     _.extend(HypotrochoidView.prototype, {
-        _init: function (options) {
+        _setOptions: function (options) {
             _.forEach(options.sub, function (options, view) {
                 this._views[view] = new (require("../models/stars/" + view))(this._context, options);
             }, this);
@@ -42,9 +42,6 @@ define([
                 this._context.stroke();
                 this._context.restore();
             }.bind(this));
-
-        },
-        _drawOrbit: function () {
 
         }
     });

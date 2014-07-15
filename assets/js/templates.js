@@ -17,7 +17,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<form action=\"/\">\n	<input type=\"submit\" value=\"render\"/>\n</form>";
+  return "<form action=\"/\">\n	<fieldset>\n		<legend>scale</legend>\n		<select name=\"scale\" id=\"scale\">\n			<option value=\"1\">inner</option>\n			<option value=\"10\">outer</option>\n			<option value=\"35\">full</option>\n		</select>\n		<label for=\"scale\"></label>\n	</fieldset>\n</form>";
   }));
 
 Handlebars.registerPartial("_message", Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -72,7 +72,7 @@ function program2(depth0,data) {
   return buffer;
   }
 
-  stack1 = helpers.each.call(depth0, (depth0 && depth0.sections), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  stack1 = helpers.each.call(depth0, depth0, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { return stack1; }
   else { return ''; }
   }));
@@ -101,7 +101,7 @@ helpers = this.merge(helpers, Handlebars.helpers); partials = this.merge(partial
   buffer += "\n    ";
   stack1 = self.invokePartial(partials._canvas, '_canvas', depth0, helpers, partials, data);
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n</div>\n\n<script src=\"/vendors/requirejs/require.min.js\" data-main=\"/js/solaris.js\"></script>";
+  buffer += "\n</div>\n\n<!--[if IE]>\n<script src=\"/vendors/harmony-collections/harmony-collections.min.js\"></script>\n<![endif]-->\n<script src=\"/vendors/requirejs/require.min.js\" data-main=\"/js/solaris.js\"></script>";
   return buffer;
   });
 

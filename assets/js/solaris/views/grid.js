@@ -18,10 +18,6 @@ define([
             strokeStyle: "#c0c0c0",
             fillStyle: "#c0c0c0"
         },
-        _init: function () {
-            // override abstract
-            // does nothing
-        },
         draw: function () {
             this._draw(1);
             this._draw(10);
