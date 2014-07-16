@@ -14,7 +14,7 @@ define([
     Earth.prototype = new AbstractPlanet();
 
     _.extend(Earth.prototype, {
-        _optionsDefault: {
+        _options: {
             body: {
                 color: "#0000ff"
             }

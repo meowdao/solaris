@@ -13,7 +13,7 @@ define([
     Sedna.prototype = new AbstractPlanet();
 
     _.extend(Sedna.prototype, {
-        _optionsDefault: {
+        _options: {
             body: {
                 color: "#ff00ff"
             }

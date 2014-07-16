@@ -13,7 +13,7 @@ define([
     Neptune.prototype = new AbstractPlanet();
 
     _.extend(Neptune.prototype, {
-        _optionsDefault: {
+        _options: {
             body: {
                 color: "#ffffff"
             }

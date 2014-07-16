@@ -23,6 +23,7 @@ define([
     _.extend(Orbit.prototype, {
         _url: "/ephemeris/getObjectOrbit",
         getPosition: function (params) {
+            console.log(this._params, params)
             var end = new Date(), // 2214-10-21
                 start = new Date(1787, 8, 10), // 1787-09-10
                 diff = ~~((end - start) / 1000 / 60 / 60 / 24), // -1 ?
@@ -30,7 +31,7 @@ define([
                     date: end.toISOString().slice(0, 10),
                     days: params.days || (this._params.days < diff ? this._params.days : diff),
                     object: this._params.index,
-                    step: this._params.step || 1,
+                    step: params.step || this._params.step || 1,
                     center: params.center
                 },
                 json = JSON.stringify(data);

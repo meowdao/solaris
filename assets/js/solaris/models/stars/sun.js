@@ -31,7 +31,7 @@ define([
     Sun.prototype = new AbstractStar();
 
     _.extend(Sun.prototype, {
-        _optionsDefault: {
+        _options: {
             body: {
                 color: "#ffff00"
             }

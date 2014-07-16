@@ -13,7 +13,7 @@ define([
     Venus.prototype = new AbstractPlanet();
 
     _.extend(Venus.prototype, {
-        _optionsDefault: {
+        _options: {
             body: {
                 color: "#ffc0cb"
             }

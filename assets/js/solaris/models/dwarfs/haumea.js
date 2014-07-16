@@ -13,7 +13,7 @@ define([
     Haumea.prototype = new AbstractPlanet();
 
     _.extend(Haumea.prototype, {
-        _optionsDefault: {
+        _options: {
             body: {
                 color: "#00ffff"
             }

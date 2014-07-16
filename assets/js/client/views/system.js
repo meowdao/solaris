@@ -5,13 +5,13 @@ define(function (require) {
     var handlebars = require("handlebars");
     var solaris = require("solaris/core");
 
-
     var options = {
-        stars: {
-            sun: {
-                body: true,
-                planets: {},
-                dwarfs: {}
+        models: {
+            "stars/sun": {
+                models: {},
+                views: {
+                    body: true
+                }
             }
         }
     };
@@ -34,7 +34,7 @@ define(function (require) {
             "change input": "onChange"
         },
 
-        template: handlebars.partials._objects,
+        template: handlebars.partials._form_system,
 
         initialize: function () {
             solaris.loadViews(["void", "grid", "system"]);
@@ -62,16 +62,18 @@ define(function (require) {
             var group = this.$(e.target).closest("[data-group]").data("group");
 
             if (e.target.checked) {
-                options.stars.sun[group][e.target.name] = {
-                    orbit: true,
-                    label: true,
-                    body: true
+                options.models["stars/sun"].models[group + "/" + e.target.name] = {
+                    views: {
+                        orbit: true,
+                        label: true,
+                        body: true
+                    }
                 };
             } else {
-                delete options.stars.sun[group][e.target.name];
+                delete options.models["stars/sun"].models[group + "/" + e.target.name];
             }
 
-            solaris.setOptions(options);
+            solaris.getView("system").setOptions(options);
             solaris.draw();
         },
 

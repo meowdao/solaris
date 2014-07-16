@@ -30,21 +30,20 @@ define([
         },
         _views: {},
         setOptions: function (options) {
-            this._options = _.extend({}, this._optionsDefault, options);
-            this._setOptions(options);
-        },
-        _setOptions: function (options) {
             this._views = {};
-            _.forEach(options, function (views, dir) {
-                if (dir === "orbit" || dir === "label" || dir === "body" || dir === "belt") {
-                    this._views[dir] = require("../views/objects/" + dir)(this);
-                    this._views[dir].setOptions(_.extend({}, this._optionsDefault[dir], options[dir]), this._params); // !this._options[dir] :(
-                } else {
-                    _.forEach(views, function (options, view) {
-                        this._views[view] = require("../models/" + dir + "/" + view);
-                        this._views[view].setOptions(options);
-                    }, this);
-                }
+            this._loadViews(options.views);
+            this._loadModels(options.models);
+        },
+        _loadViews: function (views) {
+            _.forEach(views, function (options, view) {
+                this._views[view] = require("../views/objects/" + view)(this);
+                this._views[view].setOptions(_.extend({}, this._options[view], options === true ? {} : options), this._params);
+            }, this);
+        },
+        _loadModels: function (models) {
+            _.forEach(models, function (options, model) {
+                this._views[model] = require("../models/" + model);
+                this._views[model].setOptions(options);
             }, this);
         },
         abort: function () {

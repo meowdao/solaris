@@ -13,7 +13,7 @@ define([
     Makemake.prototype = new AbstractPlanet();
 
     _.extend(Makemake.prototype, {
-        _optionsDefault: {
+        _options: {
             body: {
                 color: "#ffff00"
             }

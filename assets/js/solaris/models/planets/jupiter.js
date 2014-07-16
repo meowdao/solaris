@@ -13,7 +13,7 @@ define([
     Jupiter.prototype = new AbstractPlanet();
 
     _.extend(Jupiter.prototype, {
-        _optionsDefault: {
+        _options: {
             body: {
                 color: "#ffffff"
             }

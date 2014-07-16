@@ -13,7 +13,7 @@ define([
     Uranus.prototype = new AbstractPlanet();
 
     _.extend(Uranus.prototype, {
-        _optionsDefault: {
+        _options: {
             body: {
                 color: "#ffffff"
             }

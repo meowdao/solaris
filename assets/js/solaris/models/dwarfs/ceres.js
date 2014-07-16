@@ -13,7 +13,7 @@ define([
     Ceres.prototype = new AbstractPlanet();
 
     _.extend(Ceres.prototype, {
-        _optionsDefault: {
+        _options: {
             body: {
                 color: "#ff00ff"
             }

@@ -13,7 +13,7 @@ define([
     Pluto.prototype = new AbstractPlanet();
 
     _.extend(Pluto.prototype, {
-        _optionsDefault: {
+        _options: {
             body: {
                 color: "#ffffff"
             }

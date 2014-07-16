@@ -13,7 +13,7 @@ define([
     Pallas.prototype = new AbstractPlanet();
 
     _.extend(Pallas.prototype, {
-        _optionsDefault: {
+        _options: {
             body: {
                 color: "#ff0000"
             }

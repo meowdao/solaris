@@ -21,12 +21,10 @@ define([
     _.extend(SolarSystemView.prototype, {
         _views: {},
         _draft: document.createElement("canvas").getContext("2d"),
-        _setOptions: function (options) {
-            _.forEach(options, function (views, dir) {
-                _.forEach(views, function (options, view) {
-                    this._views[view] = require("../models/" + dir + "/" + view);
-                    this._views[view].setOptions(options);
-                }, this);
+        _loadModels: function (models) {
+            _.forEach(models, function (options, model) {
+                this._views[model] = require("../models/" + model);
+                this._views[model].setOptions(options);
             }, this);
         },
         draw: function (context) {

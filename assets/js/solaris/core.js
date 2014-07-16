@@ -30,7 +30,7 @@ define(["require",
             _.invoke(this._views, "draw", this._context);
         },
         loadViews: function (views) {
-            _.map(views,function(view){
+            _.map(views, function (view) {
                 return this.loadView(view);
             }.bind(this));
         },

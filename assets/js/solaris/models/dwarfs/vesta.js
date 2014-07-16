@@ -13,7 +13,7 @@ define([
     Vesta.prototype = new AbstractPlanet();
 
     _.extend(Vesta.prototype, {
-        _optionsDefault: {
+        _options: {
             body: {
                 color: "#ffff00"
             }

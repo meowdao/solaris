@@ -13,7 +13,7 @@ define([
     Mars.prototype = new AbstractPlanet();
 
     _.extend(Mars.prototype, {
-        _optionsDefault: {
+        _options: {
             body: {
                 color: "#ff0000"
             }

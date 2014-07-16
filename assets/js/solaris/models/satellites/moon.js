@@ -13,7 +13,7 @@ define([
     Moon.prototype = new AbstractPlanet();
 
     _.extend(Moon.prototype, {
-        _optionsDefault: {
+        _options: {
             body: {
                 color: "#00ff00"
             }

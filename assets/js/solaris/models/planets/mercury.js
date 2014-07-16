@@ -13,7 +13,7 @@ define([
     Mercury.prototype = new AbstractPlanet();
 
     _.extend(Mercury.prototype, {
-        _optionsDefault: {
+        _options: {
             body: {
                 color: "#C0C0C0"
             }

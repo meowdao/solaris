@@ -14,17 +14,15 @@ define([
     HypotrochoidView.prototype = new AbstractView();
 
     _.extend(HypotrochoidView.prototype, {
-        _setOptions: function (options) {
-            _.forEach(options, function (views, dir) {
-                _.forEach(views, function (options, view) {
-                    this._views[view] = require("../models/" + dir + "/" + view);
-                    this._views[view].setOptions(options);
-                }, this);
+        _loadModels: function (models) {
+            _.forEach(models, function (options, model) {
+                this._views[model] = require("../models/" + model);
+                this._views[model].setOptions(options);
             }, this);
         },
         draw: function (context) {
 
-            var orbits = _.map(this._views.sun._views, function (planet) {
+            var orbits = _.map(this._views["stars/sun"]._views, function (planet) {
                 return planet._views.orbit.getPosition(this._params);
             }.bind(this));
 

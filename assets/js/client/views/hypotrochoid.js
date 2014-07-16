@@ -6,18 +6,27 @@ define(function (require) {
     var solaris = require("solaris/core");
 
     var options = {
-        stars: {
-            sun: {
-                //body: true,
-                planets: {
-                    earth: {
-                        orbit: true
+        models: {
+            "stars/sun": {
+                models: {
+                    "planets/earth": {
+                        views: {
+                            orbit: true,
+                            label: true,
+                            body: true
+                        }
                     },
-                    venus: {
-                        orbit: true
+                    "planets/venus": {
+                        views: {
+                            orbit: true,
+                            label: true,
+                            body: true
+                        }
                     }
                 },
-                dwarfs: {}
+                views: {
+                    //body: true
+                }
             }
         }
     };
@@ -25,7 +34,8 @@ define(function (require) {
     var params = {
         center: 11,
         scale: 1,
-        days: 300
+        days: 3000,
+        step: 7
     };
 
     return backbone.View.extend({
@@ -35,7 +45,7 @@ define(function (require) {
 
         },
 
-        template: handlebars.partials._objects,
+        template: handlebars.partials._form_hypotrochoid,
 
         initialize: function () {
             solaris.loadViews(["void", "grid", "hypotrochoid"]);
@@ -43,6 +53,8 @@ define(function (require) {
             solaris.getView("hypotrochoid").setOptions(options);
             solaris.getView("hypotrochoid").setParams(params);
             solaris.draw();
+
+            this.$el.find("form").append(this.template({}));
         }
 
     });

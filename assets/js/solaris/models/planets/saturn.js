@@ -13,7 +13,7 @@ define([
     Saturn.prototype = new AbstractPlanet();
 
     _.extend(Saturn.prototype, {
-        _optionsDefault: {
+        _options: {
             body: {
                 color: "#ffffff"
             }
