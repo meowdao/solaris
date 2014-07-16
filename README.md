@@ -9,7 +9,7 @@ Dependencies
 ------------
 You have to have nodejs to run the project
 
-- nodejs 0.10.29
+- nodejs 0.10.x
 
 It may work on lower versions but I have not tested it
 
@@ -25,8 +25,9 @@ installing globally is a preferred way for both packages
 ```
 npm install -g grunt-cli bower
 ```
+if you have an error on this step try to use `sudo` 
 
-Download all required packages and data
+Download all required packages, data and build project
 ```bash
 bash install.sh
 ```

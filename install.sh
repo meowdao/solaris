@@ -6,6 +6,6 @@ bower install
 grunt
 
 wget -m ftp://anonymous@quasar.ipa.nw.ru/incoming/EPM/Data/011m/ -np -A .bin
-mkdir -p data/quasar/011m
-mv quasar.ipa.nw.ru/incoming/EPM/Data/011m data/quasar/011m
+mkdir -p data/quasar
+mv quasar.ipa.nw.ru/incoming/EPM/Data/011m data/quasar
 rm -fr quasar.ipa.nw.ru
