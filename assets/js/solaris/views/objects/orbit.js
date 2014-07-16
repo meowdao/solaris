@@ -23,7 +23,6 @@ define([
     _.extend(Orbit.prototype, {
         _url: "/ephemeris/getObjectOrbit",
         getPosition: function (params) {
-            console.log(this._params, params)
             var end = new Date(), // 2214-10-21
                 start = new Date(1787, 8, 10), // 1787-09-10
                 diff = ~~((end - start) / 1000 / 60 / 60 / 24), // -1 ?
