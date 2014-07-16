@@ -26,9 +26,10 @@ define([
             var end = new Date(), // 2214-10-21
                 start = new Date(1787, 8, 10), // 1787-09-10
                 diff = ~~((end - start) / 1000 / 60 / 60 / 24), // -1 ?
+                days = this._params.days < diff ? this._params.days : diff,
                 data = {
                     date: end.toISOString().slice(0, 10),
-                    days: params.days || (this._params.days < diff ? this._params.days : diff),
+                    period: params.period || days,
                     object: this._params.index,
                     step: params.step || this._params.step || 1,
                     center: params.center

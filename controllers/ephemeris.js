@@ -21,15 +21,15 @@ var methods = {
         var jd = ~~calendar.gregorian_to_jd(~~date[0], ~~date[1], ~~date[2]);
 
         var i = 0,
-            j = ~~query.days,
+            period = ~~query.period,
             step = ~~query.step || 1,
             array = [];
         if (query.object <= 12) {
-            for (; i < j; i += step) {
+            for (; i < period; i += step) {
                 array.push(epmc.calcWrt(query.object, query.center, jd - i, 0.5));
             }
         } else {
-            for (; i < j; i += step) {
+            for (; i < period; i += step) {
                 array.push(epmc.calcWrtDwarf(query.object - 12, query.center, jd - i, 0.5));
             }
         }

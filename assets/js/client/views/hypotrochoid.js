@@ -5,18 +5,20 @@ define(function (require) {
     var handlebars = require("handlebars");
     var solaris = require("solaris/core");
 
+
+    // http://hughsk.io/hypotrochoid/
     var options = {
         models: {
             "stars/sun": {
                 models: {
-                    "planets/earth": {
+                    "planets/venus": {
                         views: {
                             orbit: true,
                             label: true,
                             body: true
                         }
                     },
-                    "planets/venus": {
+                    "planets/earth": {
                         views: {
                             orbit: true,
                             label: true,
@@ -34,7 +36,7 @@ define(function (require) {
     var params = {
         center: 11,
         scale: 1,
-        days: 3000,
+        period: 3000,
         step: 7
     };
 
