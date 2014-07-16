@@ -15,7 +15,7 @@ define([
     _.extend(Moon.prototype, {
         _options: {
             body: {
-                color: "#00ff00"
+                fillStyle: "#00ff00"
             }
         },
         _params: {

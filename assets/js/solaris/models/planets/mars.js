@@ -15,7 +15,7 @@ define([
     _.extend(Mars.prototype, {
         _options: {
             body: {
-                color: "#ff0000"
+                fillStyle: "#ff0000"
             }
         },
         _params: {

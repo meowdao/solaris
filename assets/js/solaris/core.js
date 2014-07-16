@@ -1,6 +1,7 @@
 define(["require",
-    "./views/void",
+    "./views/background",
     "./views/grid",
+    "./views/legend",
     "./views/system",
     "./views/natal",
     "./views/hypotrochoid"

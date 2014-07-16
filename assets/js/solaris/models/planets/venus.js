@@ -15,7 +15,7 @@ define([
     _.extend(Venus.prototype, {
         _options: {
             body: {
-                color: "#ffc0cb"
+                fillStyle: "#ffc0cb"
             }
         },
         _params: {

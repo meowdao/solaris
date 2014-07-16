@@ -33,7 +33,7 @@ define([
     _.extend(Sun.prototype, {
         _options: {
             body: {
-                color: "#ffff00"
+                fillStyle: "#ffff00"
             }
         },
         _params: {

@@ -11,7 +11,9 @@ define(function (require) {
 
     Proto.prototype = {
         _optionsDefault: {
-            color: "#ffffff"
+            fillStyle: "#ffffff",
+            strokeStyle: "#ffffff",
+            font: "bold 12px sans-serif"
         },
         _options: {},
         _promises: {},

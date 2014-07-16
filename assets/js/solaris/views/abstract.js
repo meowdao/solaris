@@ -13,8 +13,10 @@ define(function (require) {
             center: 11,
             scale: 1
         },
+        _options: {},
         _views: {},
         setOptions: function (options) {
+            _.extend(this._options, options);
             this._loadModels(options.models);
         },
         setParams: function(params){

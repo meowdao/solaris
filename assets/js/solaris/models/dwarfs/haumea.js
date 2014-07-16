@@ -15,7 +15,7 @@ define([
     _.extend(Haumea.prototype, {
         _options: {
             body: {
-                color: "#00ffff"
+                fillStyle: "#00ffff"
             }
         },
         _params: {

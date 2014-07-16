@@ -15,7 +15,7 @@ define([
     _.extend(Mercury.prototype, {
         _options: {
             body: {
-                color: "#C0C0C0"
+                fillStyle: "#C0C0C0"
             }
         },
         _params: {

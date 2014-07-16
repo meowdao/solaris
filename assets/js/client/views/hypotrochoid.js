@@ -48,7 +48,7 @@ define(function (require) {
         template: handlebars.partials._form_hypotrochoid,
 
         initialize: function () {
-            solaris.loadViews(["void", "grid", "hypotrochoid"]);
+            solaris.loadViews(["background", "grid", "legend", "hypotrochoid"]);
             solaris.setContext(document.getElementById("solaris").getContext("2d"));
             solaris.getView("hypotrochoid").setOptions(options);
             solaris.getView("hypotrochoid").setParams(params);

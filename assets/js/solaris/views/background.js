@@ -6,23 +6,23 @@ define([
 
     var _ = require("underscore");
 
-    var VoidView = function () {
+    var BackgroundView = function () {
 
     };
 
-    VoidView.prototype = new AbstractView();
+    BackgroundView.prototype = new AbstractView();
 
-    _.extend(VoidView.prototype, {
+    _.extend(BackgroundView.prototype, {
         _options: {
-            color: "#000000"
+            fillStyle: "#000000"
         },
         draw: function (context) {
             context.save();
-            context.fillStyle = this._options.color;
+            context.fillStyle = this._options.fillStyle;
             context.fillRect(0, 0, context.canvas.width, context.canvas.height);
             context.restore();
         }
     });
 
-    return new VoidView();
+    return new BackgroundView();
 });

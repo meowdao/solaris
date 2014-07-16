@@ -16,7 +16,7 @@ define([
     _.extend(Earth.prototype, {
         _options: {
             body: {
-                color: "#0000ff"
+                fillStyle: "#0000ff"
             }
         },
         _params: {

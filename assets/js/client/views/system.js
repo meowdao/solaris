@@ -37,7 +37,7 @@ define(function (require) {
         template: handlebars.partials._form_system,
 
         initialize: function () {
-            solaris.loadViews(["void", "grid", "system"]);
+            solaris.loadViews(["background", "grid", "legend", "system"]);
             solaris.setContext(document.getElementById("solaris").getContext("2d"));
             solaris.getView("system").setOptions(options);
             solaris.getView("system").setParams(params);

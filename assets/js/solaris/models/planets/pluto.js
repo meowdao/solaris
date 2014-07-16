@@ -15,7 +15,7 @@ define([
     _.extend(Pluto.prototype, {
         _options: {
             body: {
-                color: "#ffffff"
+                fillStyle: "#ffffff"
             }
         },
         _params: {

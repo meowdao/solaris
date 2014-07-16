@@ -15,7 +15,7 @@ define([
     _.extend(Jupiter.prototype, {
         _options: {
             body: {
-                color: "#ffffff"
+                fillStyle: "#ffffff"
             }
         },
         _params: {

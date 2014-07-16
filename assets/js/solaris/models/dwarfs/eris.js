@@ -16,7 +16,7 @@ define([
     _.extend(Ceres.prototype, {
         _options: {
             body: {
-                color: "#ffffff"
+                fillStyle: "#ffffff"
             }
         },
         _params: {

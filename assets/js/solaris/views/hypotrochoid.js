@@ -1,8 +1,9 @@
 define([
     "require",
     "./abstract",
+    "../constants",
     "../models/stars/sun"
-], function (require, AbstractView) {
+], function (require, AbstractView, constants) {
     "use strict";
 
     var _ = require("underscore");
@@ -14,6 +15,9 @@ define([
     HypotrochoidView.prototype = new AbstractView();
 
     _.extend(HypotrochoidView.prototype, {
+        _options: {
+            strokeStyle: "#fff"
+        },
         _loadModels: function (models) {
             _.forEach(models, function (options, model) {
                 this._views[model] = require("../models/" + model);
@@ -26,20 +30,19 @@ define([
                 return planet._views.orbit.getPosition(this._params);
             }.bind(this));
 
-            $.when.apply($, orbits).then(function(){
+            $.when.apply($, orbits).done(function () {
                 var from = arguments[0][0];
                 var to = arguments[1][0];
-                var au = 149597870.691;
 
                 context.save();
                 context.beginPath();
                 for (var i = 0, j = from.length; i < j; i++) {
-                    context.moveTo(context.canvas.width / 2 + from[i][0] * au / 1e6, context.canvas.height / 2 + from[i][1] * au / 1e6);
-                    context.lineTo(context.canvas.width / 2 + to[i][0] * au / 1e6, context.canvas.height / 2 + to[i][1] * au / 1e6);
+                    context.moveTo(context.canvas.width / 2 + from[i][0] * constants.au / 1e6, context.canvas.height / 2 + from[i][1] * constants.au / 1e6);
+                    context.lineTo(context.canvas.width / 2 + to[i][0] * constants.au / 1e6, context.canvas.height / 2 + to[i][1] * constants.au / 1e6);
                 }
-                context.strokeStyle = "#fff";
-                context.closePath();
+                context.strokeStyle = this._options.strokeStyle;
                 context.stroke();
+                context.closePath();
                 context.restore();
             }.bind(this));
 

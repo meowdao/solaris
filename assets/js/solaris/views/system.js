@@ -36,7 +36,7 @@ define([
             // TODO return promise
             _.forEach(obj._views, function (view) {
                 view.getImage(this)
-                    .then(context.drawImageData.bind(context));
+                    .done(context.drawImageData.bind(context));
                 this._draw(context, view);
             }, this);
         },
@@ -47,7 +47,7 @@ define([
                 (this._draft.canvas.height / 2 + position[1] * constants.au / 1e6 / this._params.scale),
                 5, //(this._params.radius / 1e5),
                 0, 2 * Math.PI);
-            this._draft.fillStyle = view._options.color;
+            this._draft.fillStyle = view._options.fillStyle;
             this._draft.fill();
             this._draft.closePath();
         },
@@ -57,13 +57,13 @@ define([
             for (var i = 1, j = positions.length; i < j; i++) {
                 this._draft.lineTo(this._draft.canvas.width / 2 + positions[i][0] * constants.au / 1e6 / this._params.scale, this._draft.canvas.height / 2 + positions[i][1] * constants.au / 1e6 / this._params.scale);
             }
-            this._draft.strokeStyle = view._options.color;
+            this._draft.strokeStyle = view._options.strokeStyle;
             this._draft.stroke();
             this._draft.closePath();
         },
         _drawLabel: function (position, view) {
-            this._draft.fillStyle = view._options.color;
-            this._draft.font = "bold 12px sans-serif";
+            this._draft.fillStyle = view._options.fillStyle;
+            this._draft.font = view._options.font;
             this._draft.fillText(view._params.name, this._draft.canvas.width / 2 + position[0] * constants.au / 1e6 / this._params.scale + 10, this._draft.canvas.height / 2 + position[1] * constants.au / 1e6 / this._params.scale + 10);
         },
         _extract: function (view) {
