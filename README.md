@@ -37,7 +37,7 @@ Then run node server
 node server.js
 ```
 
-And navigate to [http://localhost:8888/](http://localhost:8888/) in your browser
+And navigate to [http://localhost:8888/view](http://localhost:8888/view) in your browser
 
 Demo
 ----

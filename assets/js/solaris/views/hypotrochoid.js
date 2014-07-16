@@ -8,43 +8,45 @@ define([
     var _ = require("underscore");
     var $ = require("jquery");
 
-    // http://en.wikipedia.org/wiki/Solar_System
     var HypotrochoidView = function () {
-        return this.init.apply(this, Array.prototype.slice.call(arguments));
+
     };
     HypotrochoidView.prototype = new AbstractView();
 
     _.extend(HypotrochoidView.prototype, {
         _setOptions: function (options) {
-            _.forEach(options.sub, function (options, view) {
-                this._views[view] = new (require("../models/stars/" + view))(this._context, options);
+            _.forEach(options, function (views, dir) {
+                _.forEach(views, function (options, view) {
+                    this._views[view] = require("../models/" + dir + "/" + view);
+                    this._views[view].setOptions(options);
+                }, this);
             }, this);
         },
-        draw: function () {
+        draw: function (context) {
 
             var orbits = _.map(this._views.sun._views, function (planet) {
-                return planet._views.orbit.getPositions(new Date());
-            });
+                return planet._views.orbit.getPosition(this._params);
+            }.bind(this));
 
             $.when.apply($, orbits).then(function(){
                 var from = arguments[0][0];
                 var to = arguments[1][0];
                 var au = 149597870.691;
 
-                this._context.save();
-                this._context.beginPath();
+                context.save();
+                context.beginPath();
                 for (var i = 0, j = from.length; i < j; i++) {
-                    this._context.moveTo(this._context.canvas.width / 2 + from[i].xv[0] * au / 1e6, this._context.canvas.height / 2 + from[i].xv[1] * au / 1e6);
-                    this._context.lineTo(this._context.canvas.width / 2 + to[i].xv[0] * au / 1e6, this._context.canvas.height / 2 + to[i].xv[1] * au / 1e6);
+                    context.moveTo(context.canvas.width / 2 + from[i][0] * au / 1e6, context.canvas.height / 2 + from[i][1] * au / 1e6);
+                    context.lineTo(context.canvas.width / 2 + to[i][0] * au / 1e6, context.canvas.height / 2 + to[i][1] * au / 1e6);
                 }
-                this._context.strokeStyle = this._options.strokeStyle;
-                this._context.closePath();
-                this._context.stroke();
-                this._context.restore();
+                context.strokeStyle = "#fff";
+                context.closePath();
+                context.stroke();
+                context.restore();
             }.bind(this));
 
         }
     });
 
-    return HypotrochoidView;
+    return new HypotrochoidView();
 });

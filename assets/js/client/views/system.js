@@ -4,7 +4,7 @@ define(function (require) {
     var backbone = require("backbone");
     var handlebars = require("handlebars");
     var solaris = require("solaris/core");
-    solaris.loadViews(["void", "grid", "system"]);
+
 
     var options = {
         stars: {
@@ -37,13 +37,12 @@ define(function (require) {
         template: handlebars.partials._objects,
 
         initialize: function () {
+            solaris.loadViews(["void", "grid", "system"]);
             solaris.setContext(document.getElementById("solaris").getContext("2d"));
-            solaris.setOptions(options);
-            solaris.setParams(params);
+            solaris.getView("system").setOptions(options);
+            solaris.getView("system").setParams(params);
             solaris.draw();
-        },
 
-        render: function () {
             this.$el.find("form").append(this.template(data));
             this.disable(params);
         },

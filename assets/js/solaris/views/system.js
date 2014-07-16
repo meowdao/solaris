@@ -48,7 +48,7 @@ define([
                 (this._draft.canvas.width / 2 + position[0] * constants.au / 1e6 / this._params.scale),
                 (this._draft.canvas.height / 2 + position[1] * constants.au / 1e6 / this._params.scale),
                 5, //(this._params.radius / 1e5),
-                0, 2 * Math.PI, false);
+                0, 2 * Math.PI);
             this._draft.fillStyle = view._options.color;
             this._draft.fill();
             this._draft.closePath();

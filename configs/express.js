@@ -50,8 +50,9 @@ module.exports = function (config, app) {
     }));
     app.use(favicon(config.path.root + "/dist/img/favicon.ico"));
 
-    require("../routes/index.js")(app);
     require("../routes/ephemeris.js")(app);
+    require("../routes/index.js")(app);
+    require("../routes/view.js")(app);
 
     app.use(function (request, response, next) {
         var error = new Error();

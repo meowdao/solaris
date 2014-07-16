@@ -2,6 +2,7 @@ define(["require",
     "./views/void",
     "./views/grid",
     "./views/system",
+    "./views/natal",
     "./views/hypotrochoid"
 ], function (require) {
     "use strict";
@@ -27,12 +28,6 @@ define(["require",
         },
         draw: function () {
             _.invoke(this._views, "draw", this._context);
-        },
-        setOptions: function (options) {
-            _.invoke(this._views, "setOptions", options);
-        },
-        setParams: function (params) {
-            _.invoke(this._views, "setParams", params);
         },
         loadViews: function (views) {
             _.map(views,function(view){

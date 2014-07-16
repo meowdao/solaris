@@ -1,15 +1,19 @@
-define(function (require) {
+define([
+    "require",
+    "../views/hypotrochoid",
+    "../views/natal",
+    "../views/system"
+], function (require) {
     "use strict";
 
     var backbone = require("backbone");
 
     return backbone.Router.extend({
         routes: {
-            "": "index"
+            "view/:view": "any"
         },
-        index: function () {
-            var formView = new (require("../views/index"))();
-            formView.render();
+        any: function (view) {
+            new (require("../views/" + view))();
         }
     });
 });

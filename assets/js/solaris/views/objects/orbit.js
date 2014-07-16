@@ -28,7 +28,7 @@ define([
                 diff = ~~((end - start) / 1000 / 60 / 60 / 24), // -1 ?
                 data = {
                     date: end.toISOString().slice(0, 10),
-                    days: this._params.days < diff ? this._params.days : diff,
+                    days: params.days || (this._params.days < diff ? this._params.days : diff),
                     object: this._params.index,
                     step: this._params.step || 1,
                     center: params.center
