@@ -42,7 +42,7 @@ module.exports = function (grunt) {
                 files: {
                     "dist/css/common.min.css": "assets/css/common.less",
                     "dist/css/styles.min.css": "assets/css/styles.less",
-                    "dist/css/normalize.min.css": "dist/vendors/normalize.css/normalize.css"
+                    "dist/css/bootstrap.min.css": "dist/vendors/bootstrap/less/bootstrap.less"
                 }
             },
             development: {
@@ -53,7 +53,7 @@ module.exports = function (grunt) {
                 files: {
                     "dist/css/common.min.css": "assets/css/common.less",
                     "dist/css/styles.min.css": "assets/css/styles.less",
-                    "dist/css/normalize.min.css": "dist/vendors/normalize.css/normalize.css"
+                    "dist/css/bootstrap.min.css": "dist/vendors/bootstrap/less/bootstrap.less"
                 }
             }
         },
