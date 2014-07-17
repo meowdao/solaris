@@ -1,5 +1,5 @@
 define([
-    "Backbone",
+    "backbone",
     "../../templates"
 ], function (Backbone, templates) {
     "use strict";

@@ -1,5 +1,5 @@
 define([
-    "Backbone",
+    "backbone",
     "handlebars",
     "solaris/core"
 ], function (Backbone, handlebars, solaris) {

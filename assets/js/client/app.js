@@ -1,6 +1,6 @@
 define([
     "jquery",
-    "Backbone",
+    "backbone",
     "./routes/main"
 ], function ($, Backbone, Router) {
     "use strict";

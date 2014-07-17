@@ -1,6 +1,6 @@
 define([
     "require",
-    "Backbone",
+    "backbone",
     "../../templates",
     "../views/hypotrochoid",
     "../views/natal",

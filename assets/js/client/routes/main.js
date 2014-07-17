@@ -1,6 +1,6 @@
 define([
     "require",
-    "Backbone",
+    "backbone",
     "../views/view",
     "../views/index",
     "../views/error"
