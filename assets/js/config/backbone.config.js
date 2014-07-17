@@ -1,4 +1,4 @@
-define(["backbone"], function (backbone) {
+define(["Backbone"], function (Backbone) {
     "use strict";
-    return backbone.noConflict();
+    return Backbone.noConflict();
 });

@@ -1,7 +1,7 @@
 require.config({
     map: {
-        "backbone.config": {
-            "backbone": "backbone"
+        "Backbone.config": {
+            "Backbone": "Backbone"
         },
         "handlebars.config": {
             "handlebars": "handlebars"
@@ -25,8 +25,8 @@ require.config({
         }
     },
     paths: {
-        "backbone": "/vendors/backbone/backbone",
-        "backbone.config": "/js/config/backbone.config",
+        "Backbone": "/vendors/backbone/backbone",
+        "Backbone.config": "/js/config/backbone.config",
         "handlebars": "/vendors/handlebars/handlebars.min",
         "handlebars.config": "/js/config/handlebars.config",
         "jquery": "/vendors/jquery/dist/jquery.min",
