@@ -13,7 +13,7 @@ require.config({
             "underscore": "underscore"
         },
         "*": {
-            "Backbone": "backbone.config",
+            "Backbone": "Backbone.config",
             "handlebars": "handlebars.config",
             "jquery": "jquery.config",
             "underscore": "underscore.config"
