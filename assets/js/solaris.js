@@ -13,7 +13,7 @@ require.config({
             "underscore": "underscore"
         },
         "*": {
-            "backbone": "backbone.config",
+            "Backbone": "backbone.config",
             "handlebars": "handlebars.config",
             "jquery": "jquery.config",
             "underscore": "underscore.config"
@@ -39,26 +39,11 @@ require.config({
 });
 
 require([
-    "jquery",
-    "backbone",
-    "client/routes/main",
-    "templates"
-], function ($, backbone, Routes) {
+    "client/app"
+], function () {
     "use strict";
 
-    // http://robdodson.me/blog/2012/05/21/exploring-the-backbone-router-and-history-api/
-    // http://stackoverflow.com/questions/9328513/backbone-js-and-pushstate
-    $(document.body).on("click", "a[href]:not([data-bypass])", function (e) {
-        if (new RegExp("^((f|ht)tps?:)?//" + location.host).test(this.href)) {
-            e.preventDefault();
-            backbone.history.navigate(this.pathname, true);
-        }
-    });
+    console.log("solaris");
 
-    new Routes();
-
-    // https://blog.isotoma.com/2014/01/backbone-history-and-ie9/
-    backbone.history.start({pushState: true});
-    console.log("APP");
 });
 

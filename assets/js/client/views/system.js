@@ -1,9 +1,9 @@
-define(function (require) {
+define([
+    "Backbone",
+    "handlebars",
+    "solaris/core"
+], function (Backbone, handlebars, solaris) {
     "use strict";
-
-    var backbone = require("backbone");
-    var handlebars = require("handlebars");
-    var solaris = require("solaris/core");
 
     var options = {
         models: {
@@ -26,7 +26,7 @@ define(function (require) {
         dwarfs: ["ceres", "pallas", "vesta", "sedna", "haumea", "makemake", "eris"]
     };
 
-    return backbone.View.extend({
+    return Backbone.View.extend({
         el: ".content",
 
         events: {
@@ -38,13 +38,19 @@ define(function (require) {
 
         initialize: function () {
             solaris.loadViews(["background", "grid", "legend", "system"]);
+        },
+
+        render: function () {
+            this.$el.find("form").append(this.template(data));
+            this.disable(params);
+            this.run();
+        },
+
+        run: function () {
             solaris.setContext(document.getElementById("solaris").getContext("2d"));
             solaris.getView("system").setOptions(options);
             solaris.getView("system").setParams(params);
             solaris.draw();
-
-            this.$el.find("form").append(this.template(data));
-            this.disable(params);
         },
 
         disable: function (options) {
@@ -82,6 +88,10 @@ define(function (require) {
             this.disable(params);
             solaris.setParams(params);
             solaris.draw();
+        },
+
+        remove: function(){
+            solaris.clearViews();
         }
 
     });

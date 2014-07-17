@@ -57,6 +57,7 @@ module.exports = function (config, app) {
     app.use(function (request, response, next) {
         var error = new Error();
         error.status = 404;
+        error.message = "Page Not Found!";
         next(error);
     });
 

@@ -1,19 +1,41 @@
 define([
     "require",
-    "../views/hypotrochoid",
-    "../views/natal",
-    "../views/system"
-], function (require) {
+    "Backbone",
+    "../views/view",
+    "../views/index",
+    "../views/error"
+], function (require, Backbone) {
     "use strict";
 
-    var backbone = require("backbone");
+    var view = null;
 
-    return backbone.Router.extend({
+    return Backbone.Router.extend({
         routes: {
-            "view/:view": "any"
+            "": "index",
+            "view/:view": "view",
+            "*path": "defaultRoute"
         },
-        any: function (view) {
-            new (require("../views/" + view))();
+        index: function () {
+            if (view) {
+                view.remove();
+            }
+            view = new (require("../views/index"))();
+            view.render();
+        },
+        view: function (name) {
+            if (view) {
+                view.remove();
+            }
+            view = new (require("../views/view"))({view: name});
+            view.render();
+        },
+        defaultRoute: function () {
+            if (view) {
+                view.remove();
+            }
+            view = new (require("../views/error"))();
+            view.render();
         }
     });
 });
+

@@ -1,10 +1,9 @@
-define(function (require) {
+define([
+    "Backbone",
+    "handlebars",
+    "solaris/core"
+], function (Backbone, handlebars, solaris) {
     "use strict";
-
-    var backbone = require("backbone");
-    var handlebars = require("handlebars");
-    var solaris = require("solaris/core");
-
 
     // http://hughsk.io/hypotrochoid/
     var options = {
@@ -40,23 +39,29 @@ define(function (require) {
         step: 7
     };
 
-    return backbone.View.extend({
+    return Backbone.View.extend({
         el: ".content",
-
-        events: {
-
-        },
 
         template: handlebars.partials._form_hypotrochoid,
 
         initialize: function () {
             solaris.loadViews(["background", "grid", "legend", "hypotrochoid"]);
+        },
+
+        render: function () {
+            this.$el.find("form").append(this.template());
+            this.run();
+        },
+
+        run: function () {
             solaris.setContext(document.getElementById("solaris").getContext("2d"));
             solaris.getView("hypotrochoid").setOptions(options);
             solaris.getView("hypotrochoid").setParams(params);
             solaris.draw();
+        },
 
-            this.$el.find("form").append(this.template({}));
+        remove: function () {
+            solaris.clearViews();
         }
 
     });
