@@ -3,6 +3,7 @@ define([
     "Backbone",
     "./routes/main"
 ], function ($, Backbone, Router) {
+    "use strict";
 
     // http://backbonetutorials.com/organizing-backbone-using-modules/
     // http://robdodson.me/blog/2012/05/21/exploring-the-backbone-router-and-history-api/
@@ -14,9 +15,9 @@ define([
         }
     });
 
-    return new function () {
+    return (function () {
         new Router();
         // https://blog.isotoma.com/2014/01/backbone-history-and-ie9/
         Backbone.history.start({pushState: true});
-    };
+    })();
 });
