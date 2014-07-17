@@ -8,7 +8,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<canvas id=\"solaris\" height=\"1000\" width=\"1000\"></canvas>";
+  return "<div class=\"col-md-4\">\n<canvas id=\"solaris\" height=\"1000\" width=\"1000\"></canvas>\n</div>";
   }));
 
 Handlebars.registerPartial("_form", Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -17,7 +17,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<form action=\"/\">\n\n</form>";
+  return "<div class=\"col-sm-2\">\n<form action=\"/\">\n\n</form>\n</div>";
   }));
 
 Handlebars.registerPartial("_form_hypotrochoid", Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -26,7 +26,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<fieldset>\n    <legend>scale</legend>\n    <select name=\"scale\" id=\"scale\">\n        <option value=\"1\">inner</option>\n        <option value=\"10\">outer</option>\n        <option value=\"35\">full</option>\n    </select>\n    <label for=\"scale\"></label>\n</fieldset>\n<fieldset>\n    <legend>planets</legend>\n    <select name=\"first\" id=\"first\">\n        <option value=\"1\">mercury</option>\n        <option value=\"2\">venus</option>\n        <option value=\"3\">earth</option>\n        <option value=\"4\">mars</option>\n        <option value=\"5\">jupiter</option>\n        <option value=\"6\">saturn</option>\n        <option value=\"7\">uran</option>\n        <option value=\"8\">neptune</option>\n        <option value=\"9\">pluto</option>\n    </select>\n    <label for=\"first\"></label>\n    <select name=\"second\" id=\"second\">\n        <option value=\"1\">mercury</option>\n        <option value=\"2\">venus</option>\n        <option value=\"3\">earth</option>\n        <option value=\"4\">mars</option>\n        <option value=\"5\">jupiter</option>\n        <option value=\"6\">saturn</option>\n        <option value=\"7\">uran</option>\n        <option value=\"8\">neptune</option>\n        <option value=\"9\">pluto</option>\n    </select>\n    <label for=\"second\"></label>\n</fieldset>\n<fieldset>\n    <legend>interval</legend>\n    <select name=\"interval\" id=\"interval\">\n        <option value=\"1\">1</option>\n        <option value=\"2\">2</option>\n        <option value=\"3\">3</option>\n        <option value=\"4\">4</option>\n        <option value=\"5\">5</option>\n        <option value=\"6\">6</option>\n        <option value=\"7\">7</option>\n        <option value=\"8\">8</option>\n        <option value=\"9\">9</option>\n        <option value=\"10\">10</option>\n    </select>\n    <label for=\"interval\"></label>\n    <select name=\"duration\" id=\"duration\">\n        <option value=\"100\">100</option>\n        <option value=\"500\">500</option>\n        <option value=\"1000\">1000</option>\n        <option value=\"2000\">2000</option>\n        <option value=\"3000\">3000</option>\n        <option value=\"5000\">5000</option>\n        <option value=\"10000\">10000</option>\n    </select>\n    <label for=\"duration\"></label>\n</fieldset>\n";
+  return "<fieldset>\n    <div class=\"panel panel-default\">\n    <legend class=\"panel-heading\">scale</legend>\n    <div class=\"panel-body\">\n    <select class=\"form-control\" name=\"scale\" id=\"scale\">\n        <option value=\"1\">inner</option>\n        <option value=\"10\">outer</option>\n        <option value=\"35\">full</option>\n    </select>\n    <label for=\"scale\"></label>\n    </div>\n    </div>\n</fieldset>\n\n\n\n<fieldset>\n    <div class=\"panel panel-default\">\n    <legend class=\"panel-heading\">planets</legend>\n    <div class=\"panel-body\">\n    <select class=\"form-control\" name=\"first\" id=\"first\">\n        <option value=\"1\">mercury</option>\n        <option value=\"2\">venus</option>\n        <option value=\"3\">earth</option>\n        <option value=\"4\">mars</option>\n        <option value=\"5\">jupiter</option>\n        <option value=\"6\">saturn</option>\n        <option value=\"7\">uran</option>\n        <option value=\"8\">neptune</option>\n        <option value=\"9\">pluto</option>\n    </select>\n    <label for=\"first\"></label>\n    <select class=\"form-control\" name=\"second\" id=\"second\">\n        <option value=\"1\">mercury</option>\n        <option value=\"2\">venus</option>\n        <option value=\"3\">earth</option>\n        <option value=\"4\">mars</option>\n        <option value=\"5\">jupiter</option>\n        <option value=\"6\">saturn</option>\n        <option value=\"7\">uran</option>\n        <option value=\"8\">neptune</option>\n        <option value=\"9\">pluto</option>\n    </select>\n    <label for=\"second\"></label>\n    </div>\n    </div>\n</fieldset>\n\n\n<fieldset>\n    <div class=\"panel panel-default\">\n    <legend class=\"panel-heading\">interval</legend>\n    <div class=\"panel-body\">\n    <select class=\"form-control\" name=\"interval\" id=\"interval\">\n        <option value=\"1\">1</option>\n        <option value=\"2\">2</option>\n        <option value=\"3\">3</option>\n        <option value=\"4\">4</option>\n        <option value=\"5\">5</option>\n        <option value=\"6\">6</option>\n        <option value=\"7\">7</option>\n        <option value=\"8\">8</option>\n        <option value=\"9\">9</option>\n        <option value=\"10\">10</option>\n    </select>\n    <label for=\"interval\"></label>\n    <select class=\"form-control\" name=\"duration\" id=\"duration\">\n        <option value=\"100\">100</option>\n        <option value=\"500\">500</option>\n        <option value=\"1000\">1000</option>\n        <option value=\"2000\">2000</option>\n        <option value=\"3000\">3000</option>\n        <option value=\"5000\">5000</option>\n        <option value=\"10000\">10000</option>\n    </select>\n    <label for=\"duration\"></label>\n    </div>\n    </div>\n</fieldset>\n";
   }));
 
 Handlebars.registerPartial("_form_natal", Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -48,12 +48,12 @@ function program1(depth0,data) {
   var buffer = "", stack1;
   buffer += "\n	<fieldset data-group=\""
     + escapeExpression(((stack1 = (data == null || data === false ? data : data.key)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\">\n		<legend>"
+    + "\">\n        <div class=\"panel panel-default\">\n		<legend class=\"panel-heading\">"
     + escapeExpression(((stack1 = (data == null || data === false ? data : data.key)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</legend>\n        ";
+    + "</legend>\n        <div class=\"panel-body\">\n        ";
   stack1 = helpers.each.call(depth0, depth0, {hash:{},inverse:self.noop,fn:self.program(2, program2, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n	</fieldset>\n";
+  buffer += "\n        </div>\n        </div>\n	</fieldset>\n";
   return buffer;
   }
 function program2(depth0,data) {
@@ -71,7 +71,7 @@ function program2(depth0,data) {
   return buffer;
   }
 
-  buffer += "<fieldset>\n    <legend>scale</legend>\n    <select name=\"scale\" id=\"scale\">\n        <option value=\"1\">inner</option>\n        <option value=\"10\">outer</option>\n        <option value=\"35\">full</option>\n    </select>\n    <label for=\"scale\"></label>\n</fieldset>\n\n";
+  buffer += "<fieldset>\n    <div class=\"panel panel-default\">\n    <legend class=\"panel-heading\">scale</legend>\n        <div class=\"panel-body\">\n        <select class=\"form-control\" name=\"scale\" id=\"scale\">\n        <option value=\"1\">inner</option>\n        <option value=\"10\">outer</option>\n        <option value=\"35\">full</option>\n    </select>\n    <label for=\"scale\"></label>\n    </div>\n   </div>\n</fieldset>\n\n";
   stack1 = helpers.each.call(depth0, depth0, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   return buffer;
@@ -124,7 +124,7 @@ helpers = this.merge(helpers, Handlebars.helpers); partials = this.merge(partial
   var buffer = "", stack1, helper, self=this, functionType="function";
 
 
-  buffer += "<!DOCTYPE html>\n<html>\n<head>\n	<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>\n	<meta name=\"description\" content=\"description\">\n	<meta name=\"keywords\" content=\"keywords\">\n	<meta name=\"robots\" content=\"all\"/>\n	<title>Solaris</title>\n	<link href=\"http://fonts.googleapis.com/css?family=Open%20Sans:n,i,b,bi\" rel=\"stylesheet\" type=\"text/css\">\n	<link href=\"/css/normalize.min.css\" rel=\"stylesheet\" type=\"text/css\">\n	<link href=\"/css/common.min.css\" rel=\"stylesheet\" type=\"text/css\">\n	<link href=\"/css/styles.min.css\" rel=\"stylesheet\" type=\"text/css\">\n</head>\n\n<body>\n\n    <header>\n	    <div class=\"wrapper\">\n		    Solaris\n	    </div>\n    </header>\n\n    <article>\n	    <div class=\"wrapper\">\n\n            ";
+  buffer += "<!DOCTYPE html>\n<html>\n<head>\n	<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>\n	<meta name=\"description\" content=\"description\">\n	<meta name=\"keywords\" content=\"keywords\">\n	<meta name=\"robots\" content=\"all\"/>\n	<title>Solaris</title>\n	<link href=\"http://fonts.googleapis.com/css?family=Open%20Sans:n,i,b,bi\" rel=\"stylesheet\" type=\"text/css\">\n	<link href=\"/css/bootstrap.min.css\" rel=\"stylesheet\" type=\"text/css\">\n	<link href=\"/css/common.min.css\" rel=\"stylesheet\" type=\"text/css\">\n	<link href=\"/css/styles.min.css\" rel=\"stylesheet\" type=\"text/css\">\n</head>\n\n<body>\n\n    <header>\n        <div class=\"wrapper\">\n	    <h1 class=\"page-header\">\n		    Solaris\n	    </h1>\n        </div>\n    </header>\n\n    <article>\n	    <div class=\"container\">\n\n            ";
   stack1 = self.invokePartial(partials._message, '_message', depth0, helpers, partials, data);
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n\n            ";
