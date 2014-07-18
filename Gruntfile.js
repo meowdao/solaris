@@ -115,6 +115,7 @@ module.exports = function (grunt) {
                         "backbone": "empty:",
                         "handlebars": "empty:",
                         "jquery": "empty:",
+                        "marionette": "empty:",
                         "underscore": "empty:"
                     }
                 }
