@@ -4,7 +4,7 @@ define([
     "./jquery",
     "./marionette",
     "./underscore"
-],function (Backbone, Handlebars, $, Marionette, _) {
+],function () {
     /*
      this file does nothing
      except without this file all configs used in `map`
