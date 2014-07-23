@@ -18,23 +18,36 @@ require.config({
     shim: {
         handlebars: {
             exports: "Handlebars"
+        },
+        "backbone.wreqr" : {
+            deps: ["config/backbone"]
+        },
+        "backbone.babysitter" : {
+            deps: ["config/backbone"]
         }
     },
     paths: {
         "backbone": "/vendors/backbone/backbone",
+        "backbone.babysitter": "/vendors/backbone.babysitter/lib/backbone.babysitter.min",
+        "backbone.wreqr": "/vendors/backbone.wreqr/lib/backbone.wreqr.min",
         "handlebars": "/vendors/handlebars/handlebars.min",
         "jquery": "/vendors/jquery/dist/jquery",
         "jquery-ui": "/vendors/jquery-ui/ui",
-        "marionette": "/vendors/marionette/lib/backbone.marionette",
+        "marionette": "/vendors/marionette/lib/core/backbone.marionette",
         "underscore": "/vendors/underscore/underscore"
     }
 });
 
 require([
+    "backbone",
+    "marionette",
     "config/main",
-    "client/app"
-], function (config, App) {
+    "client/app",
+    "templates"
+], function (B, M, config, App) {
     "use strict";
+
+    console.log(B, B.Marionette)
 
     App.start();
     console.log("solaris");

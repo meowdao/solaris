@@ -1,41 +1,27 @@
 define([
-    "require",
     "backbone",
-    "../views/view",
-    "../views/index",
-    "../views/error"
-], function (require, Backbone) {
+    "marionette",
+    "../routes/welcome",
+    "../routes/error",
+    "../routes/view"
+], function (Backbone, Marionette, WelcomeRouter, ErrorRouter, ViewRouter) {
     "use strict";
 
-    var view = null;
+    console.log("routes/main")
 
-    return Backbone.Router.extend({
+    return Backbone.Marionette.AppRouter.extend({
         routes: {
-            "": "index",
-            "view/:view": "view",
-            "*path": "defaultRoute"
-        },
-        index: function () {
-            if (view) {
-                view.remove();
+            "": function(){
+                console.log("MainRouter:''")
+                new WelcomeRouter("");
+            },
+            "view": function(){
+                new ViewRouter("view/");
+            },
+            "*path": function(){
+                new ErrorRouter("");
             }
-            view = new (require("../views/index"))();
-            view.render();
-        },
-        view: function (name) {
-            if (view) {
-                view.remove();
-            }
-            view = new (require("../views/view"))({view: name});
-            view.render();
-        },
-        defaultRoute: function () {
-            if (view) {
-                view.remove();
-            }
-            view = new (require("../views/error"))();
-            view.render();
         }
     });
-});
 
+});

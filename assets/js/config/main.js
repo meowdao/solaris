@@ -2,7 +2,6 @@ define([
     "./backbone",
     "./handlebars",
     "./jquery",
-    "./marionette",
     "./underscore"
 ],function () {
     /*

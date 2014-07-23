@@ -8,7 +8,16 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<div class=\"col-lg-10\">\n	<canvas id=\"solaris\" height=\"1000\" width=\"1000\"></canvas>\n</div>";
+  return "<div class=\"canvas col-lg-10\">\n	<canvas id=\"solaris\" height=\"1000\" width=\"1000\"></canvas>\n</div>";
+  }));
+
+Handlebars.registerPartial("_error", Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var stack1, functionType="function", escapeExpression=this.escapeExpression;
+
+
+  return escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.error)),stack1 == null || stack1 === false ? stack1 : stack1.message)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1));
   }));
 
 Handlebars.registerPartial("_form", Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -17,7 +26,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<div class=\"col-lg-2\">\n	<form action=\"/\">\n        <h2 class=\"page-header\">Options</h2>\n	</form>\n</div>";
+  return "<div class=\"form col-lg-2\">\n	<form action=\"/\">\n        <h2 class=\"page-header\">Options</h2>\n	</form>\n</div>";
   }));
 
 Handlebars.registerPartial("_form_hypotrochoid", Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -96,42 +105,57 @@ function program1(depth0,data) {
   else { return ''; }
   }));
 
-this["JST"]["error"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+Handlebars.registerPartial("_views", Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression;
+  
 
 
-  buffer += "\n\n<h1 class=\"page-header\">"
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.error)),stack1 == null || stack1 === false ? stack1 : stack1.message)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</h1>\n";
-  return buffer;
-  });
+  return "<table class=\"views\">\n	<tr>\n		<td>\n			<a href=\"/view/hypotrochoid\">\n				<img src=\"/img/hypotrochoid.png\" width=\"400\" height=\"400\" alt=\"hypotrochoid\"/>\n			</a>\n		</td>\n		<td>\n			<a href=\"/view/system\">\n				<img src=\"/img/system.png\" width=\"400\" height=\"400\" alt=\"system\"/>\n			</a>\n		</td>\n	</tr>\n	<tr>\n		<td>\n			<a href=\"/view/hypotrochoid\">Hypotrochoid</a> view is inspired by\n			<a href=\"http://www.amazon.com/Little-Book-Coincidence-Wooden-Books/dp/0802713882\">Little Book\n				Coincidence</a> In the book orbits are just two circles but here they are build on real data\n		</td>\n		<td>\n			<a href=\"/view/system\">System</a> simple solar system view which shows current position of planets\n		</td>\n	</tr>\n</table>";
+  }));
 
-this["JST"]["index"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+Handlebars.registerPartial("_welcome", Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "";
 
 
-  buffer += "\n\n<h1 class=\"page-header\">Solaris</h1>\n\n<table class=\"views\">\n	<tr>\n		<td>\n			<a href=\"/view/hypotrochoid\">\n				<img src=\"/img/hypotrochoid.png\" width=\"400\" height=\"400\" alt=\"hypotrochoid\"/>\n			</a>\n		</td>\n		<td>\n			<a href=\"/view/system\">\n				<img src=\"/img/system.png\" width=\"400\" height=\"400\" alt=\"system\"/>\n			</a>\n		</td>\n	</tr>\n	<tr>\n		<td>\n			<a href=\"/view/hypotrochoid\">Hypotrochoid</a> view is inspired by\n			<a href=\"http://www.amazon.com/Little-Book-Coincidence-Wooden-Books/dp/0802713882\">Little Book\n				Coincidence</a> In the book orbits are just two circles but here they are build on real data\n		</td>\n		<td>\n			<a href=\"/view/system\">System</a> simple solar system view which shows current position of planets\n		</td>\n	</tr>\n</table>";
+  return buffer;
+  }));
+
+this["JST"]["error"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "";
+
+
+  buffer += "\n\n<h1 class=\"page-header\">Ooops!</h1>\n<div class=\"description\">\n123\n</div>\n";
   return buffer;
   });
 
 this["JST"]["layouts/layout"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  
+
+
+  return "<!DOCTYPE html>\n<html>\n<head>\n	<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>\n	<meta name=\"description\" content=\"description\">\n	<meta name=\"keywords\" content=\"keywords\">\n	<meta name=\"robots\" content=\"all\"/>\n	<title>Solaris</title>\n	<link href=\"http://fonts.googleapis.com/css?family=Open%20Sans:n,i,b,bi\" rel=\"stylesheet\" type=\"text/css\">\n	<link href=\"/css/bootstrap.min.css\" rel=\"stylesheet\" type=\"text/css\">\n	<link href=\"/css/common.min.css\" rel=\"stylesheet\" type=\"text/css\">\n	<link href=\"/css/styles.min.css\" rel=\"stylesheet\" type=\"text/css\">\n	<script src=\"/vendors/requirejs/require.min.js\" data-main=\"/js/solaris.js\"></script>\n</head>\n\n<body>\n\n</body>\n\n</html>";
+  });
+
+this["JST"]["layouts/main"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); partials = this.merge(partials, Handlebars.partials); data = data || {};
   var buffer = "", stack1, helper, self=this, functionType="function";
 
 
-  buffer += "<!DOCTYPE html>\n<html>\n<head>\n	<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>\n	<meta name=\"description\" content=\"description\">\n	<meta name=\"keywords\" content=\"keywords\">\n	<meta name=\"robots\" content=\"all\"/>\n	<title>Solaris</title>\n	<link href=\"http://fonts.googleapis.com/css?family=Open%20Sans:n,i,b,bi\" rel=\"stylesheet\" type=\"text/css\">\n	<link href=\"/css/bootstrap.min.css\" rel=\"stylesheet\" type=\"text/css\">\n	<link href=\"/css/common.min.css\" rel=\"stylesheet\" type=\"text/css\">\n	<link href=\"/css/styles.min.css\" rel=\"stylesheet\" type=\"text/css\">\n</head>\n\n<body>\n\n    <header>\n	    <div class=\"wrapper\">\n		    <a href=\"/\">Solaris</a>\n	    </div>\n    </header>\n\n    <article>\n	    <div class=\"wrapper container\">\n            ";
+  buffer += "<header>\n	<div class=\"wrapper\">\n		<a href=\"/\">Solaris</a>\n	</div>\n</header>\n\n<article>\n	<div class=\"wrapper container\">\n        ";
   stack1 = self.invokePartial(partials._message, '_message', depth0, helpers, partials, data);
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n            ";
+  buffer += "\n        ";
   if (helper = helpers.body) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.body); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n	    </div>\n    </article>\n\n    <footer>\n	    <div class=\"wrapper\">\n		    (c) copyright 2014\n	    </div>\n    </footer>\n    <script src=\"/vendors/requirejs/require.min.js\" data-main=\"/js/solaris.js\"></script>\n</body>\n</html>";
+  buffer += "\n	</div>\n</article>\n\n<footer>\n	<div class=\"wrapper\">\n		(c) copyright 2014\n	</div>\n</footer>\n";
   return buffer;
   });
 
@@ -148,6 +172,16 @@ helpers = this.merge(helpers, Handlebars.helpers); partials = this.merge(partial
   stack1 = self.invokePartial(partials._canvas, '_canvas', depth0, helpers, partials, data);
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n</div>";
+  return buffer;
+  });
+
+this["JST"]["welcome"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "";
+
+
+  buffer += "\n\n<div class=\"jumbotron\">\n	<h1>Solaris!</h1>\n	<p>Symple 2D solar system with several views which demonstrates planets positions and relations.</p>\n</div>";
   return buffer;
   });
 

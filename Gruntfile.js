@@ -113,6 +113,8 @@ module.exports = function (grunt) {
                     generateSourceMaps: true,
                     paths: {
                         "backbone": "empty:",
+                        "backbone.babysitter": "empty:",
+                        "backbone.wreqr": "empty:",
                         "handlebars": "empty:",
                         "jquery": "empty:",
                         "marionette": "empty:",
