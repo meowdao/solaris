@@ -1,8 +1,5 @@
 require.config({
     map: {
-        "backbone.config": {
-            "backbone": "backbone"
-        },
         "handlebars.config": {
             "handlebars": "handlebars"
         },
@@ -13,7 +10,6 @@ require.config({
             "underscore": "underscore"
         },
         "*": {
-            "backbone": "backbone.config",
             "handlebars": "handlebars.config",
             "jquery": "jquery.config",
             "underscore": "underscore.config"
@@ -25,8 +21,7 @@ require.config({
         }
     },
     paths: {
-        "backbone": "/vendors/backbone/backbone",
-        "backbone.config": "/js/config/backbone.config",
+        "ember": "/vendors/ember/ember",
         "handlebars": "/vendors/handlebars/handlebars.min",
         "handlebars.config": "/js/config/handlebars.config",
         "jquery": "/vendors/jquery/dist/jquery.min",
